@@ -1,0 +1,38 @@
+{
+  "repo": "hotpotqa/hotpot_qa",
+  "config": "fullwiki",
+  "split": "train",
+  "revision": "1908d6afbbead072334abe2965f91bd2709910ab",
+  "files": [
+    {
+      "type": "file",
+      "oid": "6a5d2fbef658520bd04c00852c1de33030090934",
+      "size": 165624177,
+      "lfs": {
+        "oid": "76d3bb3048a7cc73c1958107c0c5872a00d7e7d00c105b81e92f6769e7822e68",
+        "size": 165624177,
+        "pointerSize": 134
+      },
+      "xetHash": "7858427ee0b698bd1f55a5bdcff946bfcea3905dba6bb957e675dc34272f8fdb",
+      "path": "fullwiki/train-00000-of-00002.parquet"
+    },
+    {
+      "type": "file",
+      "oid": "d52fc5e088d38d834acd60e2751759c90f291fa8",
+      "size": 166162479,
+      "lfs": {
+        "oid": "713661628434fbb19fff7392e2e321e4ed107e3c7c7784d0690946e5f722763f",
+        "size": 166162479,
+        "pointerSize": 134
+      },
+      "xetHash": "4cb3feba5fe30100b3ac764f7802302ba01e6e860f8b19d1707420afbc32351d",
+      "path": "fullwiki/train-00001-of-00002.parquet"
+    }
+  ],
+  "source_page": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/tree/main/fullwiki",
+  "download_complete": true,
+  "num_questions": 90447,
+  "train_path": "data/hotpotqa/train.json",
+  "train_sha256": "2a5a070b43558b5589206f0f8e4f83c87dd430d316d8c2c305a8079616c9d4d0",
+  "normalization": "id -> _id; supporting_facts to [title,sentence_id]; original context omitted (never used as corpus)"
+}

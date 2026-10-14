@@ -1,0 +1,8 @@
+{
+  "labeled_samples": 1918,
+  "training_samples": 1318,
+  "complete_training_samples": 1318,
+  "oracle_or_oracle_trajectory_samples": 600,
+  "missing_answer_gain": 0,
+  "fullwiki_verified": true
+}

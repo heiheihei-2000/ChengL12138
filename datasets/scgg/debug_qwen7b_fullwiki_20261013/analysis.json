@@ -1,0 +1,2906 @@
+{
+  "analyzed_at": "2026-10-13T22:55:35.662596",
+  "command": "./run_scgg_builder.sh --mode debug --no-download --config outputs/scgg/debug/local_qwen7b.yaml",
+  "source_output": "/home/hongchang/cl/SAGE-MA-RAG/outputs/scgg/debug",
+  "manifest": {
+    "fingerprint": "62aebc37e832ce8863c9a261ff0e912b9baa5379513eb3e7ba53b6e5058bd5fb",
+    "schema_version": 1,
+    "builder_version": "0.1.0",
+    "config": {
+      "mode": "debug",
+      "num_questions": 10000,
+      "debug_num_questions": 100,
+      "max_steps": 3,
+      "topk": 5,
+      "seed": 42,
+      "shuffle": true,
+      "output_dir": "/home/hongchang/cl/SAGE-MA-RAG/outputs/scgg/debug",
+      "data": {
+        "train_path": "/home/hongchang/cl/SAGE-MA-RAG/data/hotpotqa/train.json",
+        "wiki_dir": "/home/hongchang/cl/SAGE-MA-RAG/data/wiki",
+        "corpus_path": "/home/hongchang/cl/SAGE-MA-RAG/data/wiki/documents.jsonl",
+        "auto_download": false,
+        "train_urls": [
+          "https://curtis.ml.cmu.edu/datasets/hotpot/hotpot_train_v1.1.json",
+          "http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_train_v1.1.json"
+        ],
+        "wiki_url": "https://nlp.stanford.edu/projects/hotpotqa/enwiki-20171001-pages-meta-current-withlinks-abstracts.tar.bz2",
+        "wiki_md5": "01edf64cd120ecc03a2745352779514c",
+        "download_connect_timeout": 15,
+        "download_retries": 2,
+        "download_max_seconds": 0,
+        "min_wiki_documents": 5000000
+      },
+      "bm25": {
+        "index_dir": "/home/hongchang/cl/SAGE-MA-RAG/data/wiki/bm25_index",
+        "batch_size": 10000,
+        "title_weight": 1.0,
+        "text_weight": 1.0
+      },
+      "baseline": {
+        "allow_gold_title_fallback": false
+      },
+      "candidates": {
+        "max_entities": 3,
+        "include_gold_titles": true
+      },
+      "llm": {
+        "mode": "auto",
+        "base_url": "http://127.0.0.1:18080/v1",
+        "model": "scgg-qwen2.5-7b",
+        "api_key_env": "SCGG_LOCAL_UNUSED_KEY",
+        "allow_no_api_key": true,
+        "timeout_seconds": 180,
+        "retries": 2,
+        "temperature": 0,
+        "seed": 42,
+        "max_tokens": 256,
+        "evidence_max_chars": 24000,
+        "backend": "local_vllm",
+        "model_path": "/home/hongchang/cl/SAGE-MA-RAG/models/Qwen2.5-7B-Instruct",
+        "weights_dtype": "bfloat16",
+        "server_max_model_len": 16384
+      },
+      "labels": {
+        "answer_metric": "em",
+        "final_gain_weights": {
+          "local_gain": 1.0,
+          "answer_gain": 1.0,
+          "redundancy": -1.0
+        }
+      },
+      "effective_num_questions": 100
+    },
+    "llm": {
+      "mode": "auto",
+      "base_url": "http://127.0.0.1:18080/v1",
+      "model": "scgg-qwen2.5-7b",
+      "api_key_env": "SCGG_LOCAL_UNUSED_KEY",
+      "allow_no_api_key": true,
+      "timeout_seconds": 180,
+      "retries": 2,
+      "temperature": 0,
+      "seed": 42,
+      "max_tokens": 256,
+      "evidence_max_chars": 24000,
+      "backend": "local_vllm",
+      "model_path": "/home/hongchang/cl/SAGE-MA-RAG/models/Qwen2.5-7B-Instruct",
+      "weights_dtype": "bfloat16",
+      "server_max_model_len": 16384,
+      "enabled": true
+    },
+    "train": {
+      "path": "/home/hongchang/cl/SAGE-MA-RAG/data/hotpotqa/train.json",
+      "size": 27919133,
+      "mtime_ns": 1791897974973704914
+    },
+    "corpus": {
+      "path": "/home/hongchang/cl/SAGE-MA-RAG/data/wiki/documents.jsonl",
+      "size": 1751420211,
+      "mtime_ns": 1791899129909664357
+    },
+    "corpus_documents": 5233220,
+    "question_ids": [
+      "5ab9c60455429939ce03dc16",
+      "5aba62e755429955dce3edfb",
+      "5a7365895542991f29ee2ddd",
+      "5abcbe5d5542996583600469",
+      "5a7782a55542992a6e59dea6",
+      "5a84af9a5542992a431d1a8c",
+      "5abe1a1b5542991f661060c5",
+      "5a870c3c554299211dda2bb7",
+      "5a88f89455429946c8d6e8e6",
+      "5ae6c0145542991bbc97616e",
+      "5ade61d8554299728e26c703",
+      "5adbd2b75542996e68525254",
+      "5ae7108c5542995703ce8bc5",
+      "5adc92c25542994ed6169b98",
+      "5a85cc765542991dd0999e9d",
+      "5ac3bc72554299391541391c",
+      "5ae7e06a55429952e35ea9ca",
+      "5ae3cca65542992f92d82373",
+      "5a8f43f75542992414482a23",
+      "5a7cbc955542990527d5551c",
+      "5a88aeb25542994846c1ceb7",
+      "5adc30c55542994650320ca7",
+      "5ae291c1554299495565dac8",
+      "5ae621ea5542992ae0d16238",
+      "5a8311ff55429966c78a6b21",
+      "5a8dec4d55429917b4a5bcdd",
+      "5ae4a2ae55429913cc2044b5",
+      "5ab8385255429919ba4e226d",
+      "5a84a7a55542997175ce1f15",
+      "5ab7804255429928e1fe3861",
+      "5addf5935542995b365fab9e",
+      "5a7b4e5a5542995eb53be904",
+      "5a8eaf885542995085b37479",
+      "5a8ced205542996e8ac88b43",
+      "5a7a638455429941d65f260c",
+      "5a779c515542995d83181216",
+      "5a8c7140554299653c1aa068",
+      "5abeb89a5542994516f453fe",
+      "5a7290635542994cef4bc339",
+      "5a8c9d765542996e8ac88aee",
+      "5abe630c55429976d4830b0c",
+      "5a863fd7554299211dda2ac5",
+      "5ac2a2515542990b17b1543d",
+      "5a8a472d55429930ff3c0d51",
+      "5adcf4fa5542994ed6169c45",
+      "5a7776dd55429967ab10519f",
+      "5a8a588f5542996c9b8d5ebe",
+      "5a7bc2a8554299294a54aab7",
+      "5a7e6d3a5542991319bc94a8",
+      "5ab31470554299753aec593a",
+      "5ae190fb554299492dc91b44",
+      "5ab3d9ec55429969a97a81d4",
+      "5a879f485542996e4f308888",
+      "5a877c205542993e715abf6c",
+      "5a739bec5542992d56e7e375",
+      "5ab83bee5542990e739ec87e",
+      "5ac0d9385542992a796ded8b",
+      "5a7cae1a55429935c91b529a",
+      "5ab773165542995dae37e921",
+      "5a8d7449554299068b959d06",
+      "5a7cdca255429909bec76853",
+      "5abfe1f05542997ec76fd467",
+      "5a7139205542994082a3e69a",
+      "5ab275ff554299340b5254d7",
+      "5adf48a95542993a75d26483",
+      "5ae60fea5542992663a4f24f",
+      "5ae41f3b55429970de88d905",
+      "5ab43411554299753aec5a69",
+      "5ac416695542997ea680c9ff",
+      "5a8b39b255429950cd6afc84",
+      "5ae1b052554299492dc91b6b",
+      "5ae4743c55429970de88d96e",
+      "5ae2e49a55429928c4239537",
+      "5a7e99245542994959419a21",
+      "5ae246d9554299492dc91c08",
+      "5ae4e22a55429908b63264a6",
+      "5a7e767655429949594199c6",
+      "5a83c75e554299334474608f",
+      "5ae706195542995703ce8bbe",
+      "5a7b6a3d55429931da12ca9d",
+      "5a73ade35542992d56e7e382",
+      "5add15cf5542994ed6169c6f",
+      "5a8d73d65542994ba4e3dc86",
+      "5ae5030f55429913cc204572",
+      "5ac0482f554299294b218f72",
+      "5ab8258355429916710eb003",
+      "5ae5604f5542992663a4f1ee",
+      "5ab8df8f5542991b5579f023",
+      "5ab92b72554299753720f76b",
+      "5ab9537955429970cfb8ea67",
+      "5a819d0d5542995ce29dcc17",
+      "5a8ecf3f5542995085b3749a",
+      "5ae78ccc5542997ec27276a0",
+      "5a80e0f4554299260e20a19f",
+      "5ab938cc554299743d22ea6c",
+      "5a78d40a55429970f5fffd96",
+      "5ab995e6554299131ca42385",
+      "5a89146e554299669944a4a1",
+      "5adc41f15542994650320cbd",
+      "5a74d18b55429929fddd84f3"
+    ],
+    "fullwiki_verified": true,
+    "implementation_hash": "b3030b0961bc043bf533332a955764a69c2b168b9e2e7e266fb974a84cbfae39"
+  },
+  "summary": {
+    "labeled_samples": 1918,
+    "training_samples": 1318,
+    "complete_training_samples": 1318,
+    "oracle_or_oracle_trajectory_samples": 600,
+    "missing_answer_gain": 0,
+    "fullwiki_verified": true
+  },
+  "index_info": {
+    "source": {
+      "path": "/home/hongchang/cl/SAGE-MA-RAG/data/wiki/documents.jsonl",
+      "size": 1751420211,
+      "mtime_ns": 1791899129909664357
+    },
+    "offset": 1751420211,
+    "documents": 5233220,
+    "complete": true
+  },
+  "index_bytes": 2995146752,
+  "questions": 100,
+  "distinct_question_texts": 100,
+  "states": 300,
+  "all_candidates": 1918,
+  "mean_candidates": 6.3933333333333335,
+  "mean_eligible_candidates": 4.3933333333333335,
+  "candidate_count_distribution": {
+    "7": 177,
+    "5": 37,
+    "6": 75,
+    "4": 11
+  },
+  "mean_distinct_query_texts": 5.483333333333333,
+  "kind_stats": {
+    "baseline": {
+      "samples": 300,
+      "mean_local_gain": 0.21,
+      "mean_redundancy": 0.31133333333333335,
+      "mean_final_gain": -0.06133333333333334,
+      "positive_local_gain": 110,
+      "answer_signs": {
+        "positive": 15,
+        "zero": 282,
+        "negative": 3,
+        "missing": 0
+      },
+      "final_signs": {
+        "positive": 113,
+        "zero": 45,
+        "negative": 142,
+        "missing": 0
+      }
+    },
+    "entity": {
+      "samples": 764,
+      "mean_local_gain": 0.05431937172774869,
+      "mean_redundancy": 0.18422774869109948,
+      "mean_final_gain": -0.12074607329842932,
+      "positive_local_gain": 82,
+      "answer_signs": {
+        "positive": 20,
+        "zero": 731,
+        "negative": 13,
+        "missing": 0
+      },
+      "final_signs": {
+        "positive": 93,
+        "zero": 372,
+        "negative": 299,
+        "missing": 0
+      }
+    },
+    "gold_title": {
+      "samples": 600,
+      "mean_local_gain": 0.245,
+      "mean_redundancy": 0.17891666666666667,
+      "mean_final_gain": 0.11441666666666667,
+      "positive_local_gain": 280,
+      "answer_signs": {
+        "positive": 37,
+        "zero": 555,
+        "negative": 8,
+        "missing": 0
+      },
+      "final_signs": {
+        "positive": 282,
+        "zero": 100,
+        "negative": 218,
+        "missing": 0
+      }
+    },
+    "question_rewrite": {
+      "samples": 254,
+      "mean_local_gain": 0.265748031496063,
+      "mean_redundancy": 0.35748031496062993,
+      "mean_final_gain": -0.0562992125984252,
+      "positive_local_gain": 114,
+      "answer_signs": {
+        "positive": 13,
+        "zero": 237,
+        "negative": 4,
+        "missing": 0
+      },
+      "final_signs": {
+        "positive": 110,
+        "zero": 14,
+        "negative": 130,
+        "missing": 0
+      }
+    }
+  },
+  "per_round": {
+    "0": {
+      "questions": 100,
+      "gold_documents_seen": 90,
+      "gold_documents_total": 200,
+      "full_coverage_questions": 16,
+      "any_coverage_questions": 74,
+      "new_gold_documents": 90,
+      "retrievals": 100,
+      "returned_documents": 500,
+      "baseline_labeled_samples": 100,
+      "baseline_em_before": 0.0,
+      "baseline_em_after": 0.07,
+      "baseline_answer_gain_signs": {
+        "positive": 7,
+        "zero": 93,
+        "negative": 0,
+        "missing": 0
+      },
+      "baseline_redundancy_mean": 0.0
+    },
+    "1": {
+      "questions": 100,
+      "gold_documents_seen": 123,
+      "gold_documents_total": 200,
+      "full_coverage_questions": 43,
+      "any_coverage_questions": 80,
+      "new_gold_documents": 33,
+      "retrievals": 100,
+      "returned_documents": 500,
+      "baseline_labeled_samples": 100,
+      "baseline_em_before": 0.07,
+      "baseline_em_after": 0.14,
+      "baseline_answer_gain_signs": {
+        "positive": 8,
+        "zero": 91,
+        "negative": 1,
+        "missing": 0
+      },
+      "baseline_redundancy_mean": 0.276
+    },
+    "2": {
+      "questions": 100,
+      "gold_documents_seen": 126,
+      "gold_documents_total": 200,
+      "full_coverage_questions": 45,
+      "any_coverage_questions": 81,
+      "new_gold_documents": 3,
+      "retrievals": 100,
+      "returned_documents": 500,
+      "baseline_labeled_samples": 100,
+      "baseline_em_before": 0.14,
+      "baseline_em_after": 0.12,
+      "baseline_answer_gain_signs": {
+        "positive": 0,
+        "zero": 98,
+        "negative": 2,
+        "missing": 0
+      },
+      "baseline_redundancy_mean": 0.658
+    }
+  },
+  "checks": {
+    "real_train_question_annotation_checked": 300,
+    "prefix_state_exact_checked": 300,
+    "history_no_future_checked": 300,
+    "retrieved_document_index_match_checked": 10951,
+    "active_evidence_prior_retrieval_checked": 213,
+    "gold_partition_checked": 1362,
+    "backup_evidence_prior_retrieval_checked": 1149,
+    "label_state_matches_before_checked": 1918,
+    "candidate_alignment_checked": 1918,
+    "local_gain_recomputed_checked": 1918,
+    "redundancy_recomputed_checked": 1918,
+    "answer_gain_recomputed_checked": 1918,
+    "final_gain_recomputed_checked": 1918,
+    "new_document_gold_metadata_checked": 1918,
+    "training_export_exact_checked": 1,
+    "complete_export_exact_checked": 1,
+    "gold_title_oracle_flag_checked": 600,
+    "candidate_eligibility_checked": 1918,
+    "entity_available_before_checked": 764,
+    "sample_bm25_replay_checked": 20
+  },
+  "violations": [],
+  "distributions": {
+    "training": {
+      "local_gain": {
+        "0.0": {
+          "count": 1012,
+          "percent": 76.78300455235205
+        },
+        "0.5": {
+          "count": 268,
+          "percent": 20.333839150227618
+        },
+        "1.0": {
+          "count": 38,
+          "percent": 2.8831562974203337
+        }
+      },
+      "redundancy": {
+        "0.0": {
+          "count": 707,
+          "percent": 53.64188163884674
+        },
+        "0.2": {
+          "count": 198,
+          "percent": 15.022761760242792
+        },
+        "0.4": {
+          "count": 119,
+          "percent": 9.028831562974203
+        },
+        "0.5": {
+          "count": 8,
+          "percent": 0.6069802731411229
+        },
+        "0.6": {
+          "count": 91,
+          "percent": 6.904400606980273
+        },
+        "0.75": {
+          "count": 1,
+          "percent": 0.07587253414264036
+        },
+        "0.8": {
+          "count": 78,
+          "percent": 5.918057663125948
+        },
+        "1.0": {
+          "count": 116,
+          "percent": 8.801213960546283
+        }
+      },
+      "answer_gain": {
+        "-1": {
+          "count": 20,
+          "percent": 1.5174506828528074
+        },
+        "0": {
+          "count": 1250,
+          "percent": 94.84066767830045
+        },
+        "1": {
+          "count": 48,
+          "percent": 3.6418816388467374
+        }
+      },
+      "final_gain": {
+        "-1.8": {
+          "count": 3,
+          "percent": 0.2276176024279211
+        },
+        "-1.6": {
+          "count": 1,
+          "percent": 0.07587253414264036
+        },
+        "-1.4": {
+          "count": 4,
+          "percent": 0.30349013657056145
+        },
+        "-1.2": {
+          "count": 6,
+          "percent": 0.4552352048558422
+        },
+        "-1.0": {
+          "count": 122,
+          "percent": 9.256449165402124
+        },
+        "-0.8": {
+          "count": 69,
+          "percent": 5.235204855842185
+        },
+        "-0.75": {
+          "count": 1,
+          "percent": 0.07587253414264036
+        },
+        "-0.6": {
+          "count": 85,
+          "percent": 6.449165402124431
+        },
+        "-0.5": {
+          "count": 6,
+          "percent": 0.4552352048558422
+        },
+        "-0.4": {
+          "count": 105,
+          "percent": 7.966616084977238
+        },
+        "-0.3": {
+          "count": 6,
+          "percent": 0.4552352048558422
+        },
+        "-0.2": {
+          "count": 161,
+          "percent": 12.215477996965099
+        },
+        "-0.1": {
+          "count": 2,
+          "percent": 0.15174506828528073
+        },
+        "0.0": {
+          "count": 431,
+          "percent": 32.701062215478
+        },
+        "0.1": {
+          "count": 3,
+          "percent": 0.2276176024279211
+        },
+        "0.3": {
+          "count": 25,
+          "percent": 1.896813353566009
+        },
+        "0.4": {
+          "count": 2,
+          "percent": 0.15174506828528073
+        },
+        "0.5": {
+          "count": 205,
+          "percent": 15.553869499241275
+        },
+        "0.6": {
+          "count": 6,
+          "percent": 0.4552352048558422
+        },
+        "0.8": {
+          "count": 5,
+          "percent": 0.37936267071320184
+        },
+        "0.9": {
+          "count": 1,
+          "percent": 0.07587253414264036
+        },
+        "1.0": {
+          "count": 42,
+          "percent": 3.1866464339908953
+        },
+        "1.1": {
+          "count": 1,
+          "percent": 0.07587253414264036
+        },
+        "1.3": {
+          "count": 1,
+          "percent": 0.07587253414264036
+        },
+        "1.5": {
+          "count": 22,
+          "percent": 1.669195751138088
+        },
+        "2.0": {
+          "count": 3,
+          "percent": 0.2276176024279211
+        }
+      }
+    },
+    "all_labels": {
+      "local_gain": {
+        "0.0": {
+          "count": 1332,
+          "percent": 69.44734098018769
+        },
+        "0.5": {
+          "count": 534,
+          "percent": 27.841501564129302
+        },
+        "1.0": {
+          "count": 52,
+          "percent": 2.711157455683003
+        }
+      },
+      "redundancy": {
+        "0.0": {
+          "count": 1068,
+          "percent": 55.683003128258605
+        },
+        "0.2": {
+          "count": 297,
+          "percent": 15.48488008342023
+        },
+        "0.4": {
+          "count": 173,
+          "percent": 9.019812304483837
+        },
+        "0.5": {
+          "count": 12,
+          "percent": 0.6256517205422315
+        },
+        "0.6": {
+          "count": 122,
+          "percent": 6.360792492179353
+        },
+        "0.75": {
+          "count": 2,
+          "percent": 0.10427528675703858
+        },
+        "0.8": {
+          "count": 105,
+          "percent": 5.474452554744525
+        },
+        "1.0": {
+          "count": 139,
+          "percent": 7.247132429614181
+        }
+      },
+      "answer_gain": {
+        "-1": {
+          "count": 28,
+          "percent": 1.4598540145985401
+        },
+        "0": {
+          "count": 1805,
+          "percent": 94.10844629822732
+        },
+        "1": {
+          "count": 85,
+          "percent": 4.43169968717414
+        }
+      },
+      "final_gain": {
+        "-1.8": {
+          "count": 4,
+          "percent": 0.20855057351407716
+        },
+        "-1.6": {
+          "count": 1,
+          "percent": 0.05213764337851929
+        },
+        "-1.4": {
+          "count": 6,
+          "percent": 0.31282586027111575
+        },
+        "-1.2": {
+          "count": 8,
+          "percent": 0.4171011470281543
+        },
+        "-1.0": {
+          "count": 147,
+          "percent": 7.664233576642336
+        },
+        "-0.8": {
+          "count": 93,
+          "percent": 4.848800834202294
+        },
+        "-0.75": {
+          "count": 2,
+          "percent": 0.10427528675703858
+        },
+        "-0.6": {
+          "count": 114,
+          "percent": 5.9436913451511995
+        },
+        "-0.5": {
+          "count": 11,
+          "percent": 0.5735140771637122
+        },
+        "-0.4": {
+          "count": 153,
+          "percent": 7.977059436913452
+        },
+        "-0.3": {
+          "count": 8,
+          "percent": 0.4171011470281543
+        },
+        "-0.2": {
+          "count": 238,
+          "percent": 12.408759124087592
+        },
+        "-0.1": {
+          "count": 4,
+          "percent": 0.20855057351407716
+        },
+        "0.0": {
+          "count": 531,
+          "percent": 27.685088633993743
+        },
+        "0.1": {
+          "count": 5,
+          "percent": 0.26068821689259647
+        },
+        "0.3": {
+          "count": 41,
+          "percent": 2.1376433785192908
+        },
+        "0.4": {
+          "count": 2,
+          "percent": 0.10427528675703858
+        },
+        "0.5": {
+          "count": 422,
+          "percent": 22.002085505735142
+        },
+        "0.6": {
+          "count": 8,
+          "percent": 0.4171011470281543
+        },
+        "0.8": {
+          "count": 9,
+          "percent": 0.4692387904066736
+        },
+        "0.9": {
+          "count": 1,
+          "percent": 0.05213764337851929
+        },
+        "1.0": {
+          "count": 53,
+          "percent": 2.7632950990615224
+        },
+        "1.1": {
+          "count": 1,
+          "percent": 0.05213764337851929
+        },
+        "1.3": {
+          "count": 1,
+          "percent": 0.05213764337851929
+        },
+        "1.5": {
+          "count": 48,
+          "percent": 2.502606882168926
+        },
+        "2.0": {
+          "count": 7,
+          "percent": 0.36496350364963503
+        }
+      }
+    }
+  },
+  "signs": {
+    "training": {
+      "local_gain": {
+        "positive": 306,
+        "zero": 1012,
+        "negative": 0,
+        "missing": 0
+      },
+      "answer_gain": {
+        "positive": 48,
+        "zero": 1250,
+        "negative": 20,
+        "missing": 0
+      },
+      "final_gain": {
+        "positive": 316,
+        "zero": 431,
+        "negative": 571,
+        "missing": 0
+      }
+    },
+    "all_labels": {
+      "local_gain": {
+        "positive": 586,
+        "zero": 1332,
+        "negative": 0,
+        "missing": 0
+      },
+      "answer_gain": {
+        "positive": 85,
+        "zero": 1805,
+        "negative": 28,
+        "missing": 0
+      },
+      "final_gain": {
+        "positive": 598,
+        "zero": 531,
+        "negative": 789,
+        "missing": 0
+      }
+    }
+  },
+  "means": {
+    "training": {
+      "local_gain": 0.13050075872534142,
+      "redundancy": 0.24654779969650986,
+      "answer_gain": 0.021244309559939303,
+      "final_gain": -0.09480273141122914
+    },
+    "all_labels": {
+      "local_gain": 0.16631908237747653,
+      "redundancy": 0.22539103232533889,
+      "answer_gain": 0.029718456725755994,
+      "final_gain": -0.029353493222106366
+    }
+  },
+  "gold_query_equal_training": 273,
+  "gold_query_equal_not_literal_before": 0,
+  "gold_query_equal_not_literal_before_ids": [],
+  "exported_oracle_rows": 0,
+  "oracle_target_recall_at5": 0.775,
+  "sampled_gold_titles": 200,
+  "missing_gold_titles_in_corpus": [],
+  "nonempty_gold_label_metadata_training": 306,
+  "empty_retrievals_training": 5,
+  "code_changed": [],
+  "source_hashes": {
+    "manifest.json": "85a706409ff79858a0e798f03a740ec1599ff63342eb6bb0be9ae81fced73973",
+    "states/real_states.jsonl": "8e70b5bde272ccca61373e7495b4974567d3c956ef221448cc6a17d56334f42b",
+    "candidates/candidate_queries.jsonl": "05b4dccacaa049be90170afc6144d76198978c121d16f2125373e26ce4150ea1",
+    "labels/labeled_samples.jsonl": "ca1bb17aa63af9cc1ce2affde8f104caaac79cc932b9200c249f4eec797d4b0c",
+    "scgg_dataset.jsonl": "5086dae8bcd7eddbb94096f8f1155e423177c478e271960130c1244a7e9a5cc2",
+    "scgg_dataset_complete.jsonl": "5086dae8bcd7eddbb94096f8f1155e423177c478e271960130c1244a7e9a5cc2"
+  },
+  "samples": [
+    {
+      "source_line": 1310,
+      "id": "5e3e1206e6de0e0a268acf3e",
+      "state_id": "5a74d18b55429929fddd84f3:1",
+      "kind": "entity",
+      "question": "What was the incident between the Uyghurs and an East Asian ethnic group that constitutes approximately 92% of the population of China?",
+      "state_before": {
+        "question": "What was the incident between the Uyghurs and an East Asian ethnic group that constitutes approximately 92% of the population of China?",
+        "active_evidence": [
+          {
+            "doc_id": "23536321",
+            "title": "Shaoguan incident",
+            "text": "The Shaoguan incident was a civil disturbance which took place overnight on 25/26 June 2009 in Guangdong province, China. A violent dispute erupted between migrant Uyghurs and Han workers at a toy factory in Shaoguan as a result of allegations of the sexual assault of a Han female. Groups of Han set upon Uyghur co-workers, leading to at least two Uyghurs being killed (although other reports indicate a higher death toll), and some 118 people injured, most of them Uyghurs.",
+            "score": 33.46585945712791
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "35534462",
+            "title": "Nagasaki incident",
+            "text": "The Nagasaki incident (長崎事件 , Nagasaki Jiken ) , also known as the Nagasaki―Qing Navy Incident (長崎清国水兵事件), was a riot involving Chinese Beiyang Fleet sailors in Nagasaki.",
+            "score": 26.3859150916718
+          },
+          {
+            "doc_id": "42561056",
+            "title": "2014 China–Vietnam border shootout",
+            "text": "On 18 April 2014, a group of 16 Chinese citizens, later identified as ethnic Uyghurs, engaged in a shootout with Vietnamese border guards after seizing their guns as they were being detained to be returned to China. Five Uyghurs and two Vietnamese border guards died in the incident. Ten of the Uyghur perpetrators were men and the rest were women or children.",
+            "score": 24.67166620070212
+          },
+          {
+            "doc_id": "29547706",
+            "title": "USS Monocacy incident",
+            "text": "The USS \"Monocacy\" incident was an attack on the American gunboat \"Monocacy\" in January 1918 by Chinese soldiers along the Yangtze River. It was one of many incidents at the time involving armed Chinese firing on foreign vessels.",
+            "score": 24.248008872700684
+          },
+          {
+            "doc_id": "54415556",
+            "title": "Hornet incident",
+            "text": "The Hornet incident was a diplomatic incident involving Spain, Haiti, and the United States.",
+            "score": 22.221578841569674
+          }
+        ],
+        "seen_documents": [
+          "23536321",
+          "35534462",
+          "42561056",
+          "29547706",
+          "54415556"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "Incident involving Uyghurs and Han Chinese",
+            "doc_ids": [
+              "23536321",
+              "35534462",
+              "42561056",
+              "29547706",
+              "54415556"
+            ]
+          }
+        ]
+      },
+      "query": "Shaoguan incident",
+      "retrieved_docs": [
+        {
+          "doc_id": "23536321",
+          "title": "Shaoguan incident",
+          "text": "The Shaoguan incident was a civil disturbance which took place overnight on 25/26 June 2009 in Guangdong province, China. A violent dispute erupted between migrant Uyghurs and Han workers at a toy factory in Shaoguan as a result of allegations of the sexual assault of a Han female. Groups of Han set upon Uyghur co-workers, leading to at least two Uyghurs being killed (although other reports indicate a higher death toll), and some 118 people injured, most of them Uyghurs.",
+          "score": 23.941578695010982
+        },
+        {
+          "doc_id": "55100183",
+          "title": "Shaoguan University",
+          "text": "Shaoguan University (SGU; , in short 韶大) is a tertiary educational institution in Shaoguan, Guangdong, China.",
+          "score": 21.39839011717764
+        },
+        {
+          "doc_id": "26327922",
+          "title": "Shaoguan Railway Station",
+          "text": "The Shaoguan Railway Station () is a railway station located in Shaoguan, Guangdong, China. The original Jingguang Railway station used this name before, but it has renamed as Shaoguan East Railway Station.",
+          "score": 20.90072172873703
+        },
+        {
+          "doc_id": "51893494",
+          "title": "Shaoguan Iron and Steel",
+          "text": "Baosteel Group Guangdong Shaoguan Iron and Steel Co., Ltd. known as Shaoguan Iron and Steel or SGIS or Shaogang () or Shaosteel (formerly Shaoguan Iron and Steel Group) is a Chinese steel maker.",
+          "score": 20.741574193505446
+        },
+        {
+          "doc_id": "23982091",
+          "title": "Wujiang District, Shaoguan",
+          "text": "Wujiang () is a district of Shaoguan, Guangdong province, China.",
+          "score": 20.44474920252961
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.2,
+        "final_gain": -0.2
+      },
+      "answer_evaluation": {
+        "answer_before": "yes",
+        "answer_after": "yes",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 229,
+      "id": "a9ab1265883f4974a88981ad",
+      "state_id": "5ae7e06a55429952e35ea9ca:1",
+      "kind": "entity",
+      "question": "Who is the Indian singer that sang Goro Ki Na Kaalo Ki?",
+      "state_before": {
+        "question": "Who is the Indian singer that sang Goro Ki Na Kaalo Ki?",
+        "active_evidence": [
+          {
+            "doc_id": "3775827",
+            "title": "Disco Dancer",
+            "text": "Disco Dancer is a 1982 Indian Hindi-language Bollywood musical drama film, directed by Babbar Subhash and written by Rahi Masoom Raza. It stars Bengali actor Mithun Chakraborty in the lead role, with Kim Yashpal and Rajesh Khanna in supporting roles. The film tells the rags-to-riches story of a young street performer. It is especially known for its filmi disco Bollywood songs composed by Bappi Lahiri and the dance of legendary actor Mithun Chakraborty. Songs including \"I am a Disco Dancer\", \"Jimmy Jimmy Jimmy Aaja\" (sung by Parvati Khan), \"Yaad Aa Raha Hai\" (sung by Vijay Benedict and Bappi Lahiri) and \"Goro Ki Na Kaalo Ki\" (sung by Suresh Wadkar with Usha Mangeshkar) became very popular.",
+            "score": 26.782068487353385
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "34203398",
+            "title": "Mere Bane Ki Baat Na Pucho",
+            "text": "Mere Bane Ki Baat Na Pucho is a Qawwali song. Qawwali is a form of traditional Sufi devotional music popular in South Asia, and this particular song is performed in Qawwali concerts, sometimes as a sing-along.",
+            "score": 26.038128586399967
+          },
+          {
+            "doc_id": "49983306",
+            "title": "Spend My Life with You (Ki-Yo song)",
+            "text": "\"Spend My Life with You\" is a song recorded by Japanese singer Ki-Yo for his third studio album, \"Reborn\" (2013). It was written and produced by Ki-Yo.",
+            "score": 23.167714876743148
+          },
+          {
+            "doc_id": "34223711",
+            "title": "Aaj Jaane Ki Zid Na Karo",
+            "text": "Aaj Jaane Ki Zid Na Karo (Urdu: ‎ ; please don't insist on leaving today) is a Nazm written by Pakistani poet Fayyaz Hashmi. The tune was composed by Sohail Rana, an eminent composer from Pakistan. It was popularlised by noted classical vocalists, Habib Wali Mohammad who also sang this song as a film playback singer in a Pakistani film \"Badal Aur Bijli\" (1973). Then the famous ghazal singer Farida Khanum also used to sing it in her television performances and in her live public concerts. It is sung in Raag Yaman Kalyan.",
+            "score": 22.383566201121795
+          },
+          {
+            "doc_id": "10136954",
+            "title": "Na Hoon-a",
+            "text": "Na Hoon-a (Korean: 나훈아 ) is a South Korean trot singer who began singing in the 1960s and 70s. Born Choi Hong-ki (최홍기 ) on February 2, 1947, he released numerous solo albums and special duet albums with other trot singers.",
+            "score": 21.535644768753286
+          }
+        ],
+        "seen_documents": [
+          "3775827",
+          "34203398",
+          "49983306",
+          "34223711",
+          "10136954"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "Goro Ki Na Kaalo Ki song singer India",
+            "doc_ids": [
+              "3775827",
+              "34203398",
+              "49983306",
+              "34223711",
+              "10136954"
+            ]
+          }
+        ]
+      },
+      "query": "Babbar Subhash and",
+      "retrieved_docs": [
+        {
+          "doc_id": "29830669",
+          "title": "Pyar Ke Naam Qurbaan",
+          "text": "Pyar Ke Naam Qurbaan is a 1990 Hindi Indian feature film directed by Babbar Subhash and starring Mithun Chakraborty, Dimple Kapadia, Mandakini and Danny Denzongpa",
+          "score": 24.039748897337212
+        },
+        {
+          "doc_id": "14910791",
+          "title": "Kasam Paida Karne Wale Ki",
+          "text": "Kasam Paida Karne Wale Ki is a 1984 Indian Hindi feature film produced & directed by Babbar Subhash, starring Mithun Chakraborty, Smita Patil, Salma Agha, Karan Razdan, Geeta Siddharth and Amrish Puri.",
+          "score": 22.429810471192376
+        },
+        {
+          "doc_id": "24165554",
+          "title": "Classic Dance of Love",
+          "text": "Classic - Dance of Love is a 2005 Hindi-language Indian feature film directed by Babbar Subhash, starring Mithun Chakraborty, Vikas Bhardwaj and Meghna Naidu with Shashi Kiran, Navin Nischol featuring in supporting roles. Mithun Chakraborty is the antagonist as well as the protagonist in the movie.",
+          "score": 19.780426059213596
+        },
+        {
+          "doc_id": "29784104",
+          "title": "Adventures of Tarzan",
+          "text": "Adventures of Tarzan is a 1985 Hindi-language Indian feature film directed by Babbar Subhash, starring Hemant Birje, Dalip Tahil, Kimi Katkar and Om Shivpuri. The film was much talked about in its time, mainly due to the steamy scenes between the lead actors and popular hit songs.",
+          "score": 19.614933611375285
+        },
+        {
+          "doc_id": "14830186",
+          "title": "Apna Khoon",
+          "text": "Apna Khoon is a 1978 Hindi action film comedy directed by Babbar Subhash. The films stars Shashi Kapoor, Hema Malini and Ashok Kumar. The film premiered on 11 August 1978 in Mumbai. It celebrated Silver Jubilee at the box office and one of its songs \"Hakim Tarachand Jo Rupiye Mange Panch\" became a run away chart buster.",
+          "score": 18.384430526806092
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.0,
+        "final_gain": 0.0
+      },
+      "answer_evaluation": {
+        "answer_before": "Suresh Wadkar",
+        "answer_after": "yes",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 52,
+      "id": "b3c89cc2882089a64f02ed4b",
+      "state_id": "5abcbe5d5542996583600469:1",
+      "kind": "entity",
+      "question": "Which internet podcast is run by the author of the 1990 novel \"Billy\"?",
+      "state_before": {
+        "question": "Which internet podcast is run by the author of the 1990 novel \"Billy\"?",
+        "active_evidence": [
+          {
+            "doc_id": "4852799",
+            "title": "Billy (novel)",
+            "text": "Billy is a 1990 novel by Whitley Strieber. The novel tells the story of the abduction of a child and the terror of his experience.",
+            "score": 23.995777769069406
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "35388439",
+            "title": "Nocturnal (novel)",
+            "text": "Nocturnal is a novel and podcast by author Scott Sigler. The novel was originally released in 2007 in podcast format, with a print format releasing in 2012 by Crown Publishing with some elements from the original version altered.",
+            "score": 24.245866146929522
+          },
+          {
+            "doc_id": "28502655",
+            "title": "Billy the Kid (novel)",
+            "text": "Billy the Kid is a children's novel by the English author Michael Morpurgo, first published in 2000.",
+            "score": 23.79077584164738
+          },
+          {
+            "doc_id": "697872",
+            "title": "Billy Bathgate",
+            "text": "Billy Bathgate is a 1989 novel by author E. L. Doctorow that won the 1989 National Book Critics Circle award for fiction for 1990, the 1990 PEN/Faulkner Award for Fiction, the 1990 William Dean Howells Medal, and was the runner up for the 1990 Pulitzer Prize and the 1989 National Book Award. The story is told in the first person by Billy \"Bathgate\" Behan, a fifteen-year-old boy who first becomes the gofer and then surrogate son of mobster Dutch Schultz.",
+            "score": 22.52675881326676
+          },
+          {
+            "doc_id": "35482946",
+            "title": "Infected (novel)",
+            "text": "Infected is a science fiction novel by author Scott Sigler. The novel was initially released in 2006 in podcast format with a print release in 2008 by Crown Publishing, with Sigler continuing to offer the podcast version online. The book was initially titled \"Infested\", with the name changing in order to distance itself from a movie releasing with a similar title.",
+            "score": 21.197788871326225
+          }
+        ],
+        "seen_documents": [
+          "35388439",
+          "4852799",
+          "28502655",
+          "697872",
+          "35482946"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "Author of Billy 1990 novel podcast",
+            "doc_ids": [
+              "35388439",
+              "4852799",
+              "28502655",
+              "697872",
+              "35482946"
+            ]
+          }
+        ]
+      },
+      "query": "Whitley Strieber",
+      "retrieved_docs": [
+        {
+          "doc_id": "8158230",
+          "title": "The Hunger (Strieber novel)",
+          "text": "The Hunger (1981) is a novel by Whitley Strieber. The plot involves a beautiful and wealthy vampire named Miriam Blaylock who takes human lovers and transforms them into vampire-human hybrids.",
+          "score": 29.120205774533197
+        },
+        {
+          "doc_id": "7241658",
+          "title": "Communion (book)",
+          "text": "Communion: A True Story is a book by American ufologist and horror author Whitley Strieber that was first published in February 1987. The book is based on the claims of Whitley Strieber, who experiences \"lost time\" and terrifying flashbacks, which hypnosis undertaken by Budd Hopkins later links to an alleged encounter with aliens.",
+          "score": 28.81507592757194
+        },
+        {
+          "doc_id": "9358857",
+          "title": "Communion (1989 film)",
+          "text": "Communion is a 1989 drama horror film based on the book of the same name by Whitley Strieber.",
+          "score": 28.36230816414523
+        },
+        {
+          "doc_id": "10252206",
+          "title": "The Wild (novel)",
+          "text": "The Wild is a fantasy novel by American ufologist and horror fiction writer Whitley Strieber that was first published in 1991.",
+          "score": 27.442694534748103
+        },
+        {
+          "doc_id": "4852799",
+          "title": "Billy (novel)",
+          "text": "Billy is a 1990 novel by Whitley Strieber. The novel tells the story of the abduction of a child and the terror of his experience.",
+          "score": 26.580842771756842
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.2,
+        "final_gain": -0.2
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "noanswer",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 564,
+      "id": "d247890cb11379a950f700fc",
+      "state_id": "5a8a472d55429930ff3c0d51:1",
+      "kind": "baseline",
+      "question": "Are Pittsburgh International Airport and Sawyer International Airport in the same country?",
+      "state_before": {
+        "question": "Are Pittsburgh International Airport and Sawyer International Airport in the same country?",
+        "active_evidence": [
+          {
+            "doc_id": "262525",
+            "title": "Pittsburgh International Airport",
+            "text": "Pittsburgh International Airport (IATA: PIT, ICAO: KPIT, FAA LID: PIT) , formerly Greater Pittsburgh International Airport, is a civil–military international airport in the suburbs of the United States' city of Pittsburgh, Pennsylvania. It is located in Findlay and Moon townships of Allegheny County, about 20 mi west of downtown Pittsburgh.",
+            "score": 26.016152184125573
+          },
+          {
+            "doc_id": "2924696",
+            "title": "Sawyer International Airport",
+            "text": "Sawyer International Airport (IATA: MQT, ICAO: KSAW, FAA LID: SAW) is a county owned public use airport in Marquette County, Michigan, United States. It is located 17 nmi south of the central business district of the city of Marquette. It is included in the Federal Aviation Administration (FAA) National Plan of Integrated Airport Systems for 2017–2021, in which it is categorized as a non-hub primary commercial service facility.",
+            "score": 23.283130899548837
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "2928589",
+            "title": "Marquette County Airport",
+            "text": "Marquette County Airport (IATA: MQT, ICAO: KMQT, FAA LID: MQT) is a former airport in Negaunee, Michigan. After the closure of the nearby K.I. Sawyer Air Force Base, the airport was closed and facilities were transferred to Sawyer International Airport.",
+            "score": 25.85322400370181
+          },
+          {
+            "doc_id": "12683189",
+            "title": "Pittsburgh International Airport People Movers",
+            "text": "The Pittsburgh International Airport People Mover is a fully automated people mover system at the Pittsburgh International Airport serving Pittsburgh, Pennsylvania. Designed and installed at a cost of $14 million by Adtranz (now Bombardier), it runs in two parallel underground tunnels to connect the landside terminal with the airside terminal.",
+            "score": 24.1394712932184
+          },
+          {
+            "doc_id": "23340803",
+            "title": "Benair C. Sawyer",
+            "text": "Benair Clement Sawyer, sometimes incorrectly referred to as \"Benjamin\" Sawyer (October 18, 1822 – March 13, 1908), was the Mayor of Pittsburgh, Pennsylvania from 1862 to 1864.",
+            "score": 22.560099869575122
+          }
+        ],
+        "seen_documents": [
+          "262525",
+          "2928589",
+          "12683189",
+          "2924696",
+          "23340803"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "Pittsburgh International Airport country location and Sawyer International Airport country location",
+            "doc_ids": [
+              "262525",
+              "2928589",
+              "12683189",
+              "2924696",
+              "23340803"
+            ]
+          }
+        ]
+      },
+      "query": "Location of Sawyer International Airport and Pittsburgh International Airport",
+      "retrieved_docs": [
+        {
+          "doc_id": "262525",
+          "title": "Pittsburgh International Airport",
+          "text": "Pittsburgh International Airport (IATA: PIT, ICAO: KPIT, FAA LID: PIT) , formerly Greater Pittsburgh International Airport, is a civil–military international airport in the suburbs of the United States' city of Pittsburgh, Pennsylvania. It is located in Findlay and Moon townships of Allegheny County, about 20 mi west of downtown Pittsburgh.",
+          "score": 26.016152184125573
+        },
+        {
+          "doc_id": "2928589",
+          "title": "Marquette County Airport",
+          "text": "Marquette County Airport (IATA: MQT, ICAO: KMQT, FAA LID: MQT) is a former airport in Negaunee, Michigan. After the closure of the nearby K.I. Sawyer Air Force Base, the airport was closed and facilities were transferred to Sawyer International Airport.",
+          "score": 25.85322400370181
+        },
+        {
+          "doc_id": "12683189",
+          "title": "Pittsburgh International Airport People Movers",
+          "text": "The Pittsburgh International Airport People Mover is a fully automated people mover system at the Pittsburgh International Airport serving Pittsburgh, Pennsylvania. Designed and installed at a cost of $14 million by Adtranz (now Bombardier), it runs in two parallel underground tunnels to connect the landside terminal with the airside terminal.",
+          "score": 24.1394712932184
+        },
+        {
+          "doc_id": "2924696",
+          "title": "Sawyer International Airport",
+          "text": "Sawyer International Airport (IATA: MQT, ICAO: KSAW, FAA LID: SAW) is a county owned public use airport in Marquette County, Michigan, United States. It is located 17 nmi south of the central business district of the city of Marquette. It is included in the Federal Aviation Administration (FAA) National Plan of Integrated Airport Systems for 2017–2021, in which it is categorized as a non-hub primary commercial service facility.",
+          "score": 23.283130899548837
+        },
+        {
+          "doc_id": "23340803",
+          "title": "Benair C. Sawyer",
+          "text": "Benair Clement Sawyer, sometimes incorrectly referred to as \"Benjamin\" Sawyer (October 18, 1822 – March 13, 1908), was the Mayor of Pittsburgh, Pennsylvania from 1862 to 1864.",
+          "score": 22.560099869575122
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 1.0,
+        "final_gain": -1.0
+      },
+      "answer_evaluation": {
+        "answer_before": "no",
+        "answer_after": "no",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 502,
+      "id": "56a4c62011b1e53f90155a72",
+      "state_id": "5a7290635542994cef4bc339:2",
+      "kind": "entity",
+      "question": "During the May Event, what was the part of Catalonia controlled by the anarchists called?",
+      "state_before": {
+        "question": "During the May Event, what was the part of Catalonia controlled by the anarchists called?",
+        "active_evidence": [
+          {
+            "doc_id": "817834",
+            "title": "May Days",
+            "text": "The May Days of 1937, sometimes also called May Events, referring to a series of clashes between 3 and 8 May 1937, were a period of civil violence in Catalonia, when factions of the Republican side engaged each other in street battles in various parts of Catalonia, in particular in the city of Barcelona, during the Spanish Civil War.",
+            "score": 20.860204061981698
+          },
+          {
+            "doc_id": "6552391",
+            "title": "Revolutionary Catalonia",
+            "text": "Revolutionary Catalonia (July 21, 1936 – 1939) was the part of Catalonia (an autonomous region in northeast Spain) controlled by the anarchist, communist, and socialist trade unions, parties, and militias during the Spanish Civil War. These included the Confederación Nacional del Trabajo (CNT, National Confederation of Labor) which was the dominant labor union at the time and the closely associated Federación Anarquista Ibérica (FAI, Iberian Anarchist Federation). The Unión General de Trabajadores (General Worker's Union), the POUM and the Unified Socialist Party of Catalonia (which included the Communist Party of Catalonia) were also involved. Although the Generalitat of Catalonia was nominally in power, the trade unions were \"de facto\" in command of most of the economy and military forces.",
+            "score": 19.227479287493416
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "26822474",
+            "title": "Control Patrols",
+            "text": "The Control Patrols of the Central Committee of Anti-fascist Militias of Catalonia was an anarchist militia controlled by the CNT-FAI and operating in Catalonia during the first year of the Spanish Civil War.",
+            "score": 19.902478872305977
+          },
+          {
+            "doc_id": "53356170",
+            "title": "Anarchist Shinmin",
+            "text": "Anarchist Shinmin (1929-1932), also known as the Korean People’s Association in Manchuria and the Shinmin Korean People's Association, was an autonomous anarchist zone in Manchuria near the Korean borderlands, populated by two million Korean migrants.",
+            "score": 19.661969936845114
+          },
+          {
+            "doc_id": "2636439",
+            "title": "Francesc Sabaté Llopart",
+            "text": "Francesc Sabaté Llopart (March 30, 1915 in L'Hospitalet de Llobregat, Catalonia – January 5, 1960 in Sant Celoni, Catalonia), also known as \"El Quico\", was a Catalan anarchist involved in the resistance against the Nationalist regime of Francisco Franco.",
+            "score": 19.158343367557503
+          },
+          {
+            "doc_id": "13616654",
+            "title": "Catalonia men's national futsal team",
+            "text": "The Catalonia national futsal team represents Catalonia in international futsal competitions organized by AMF and UEFS. It is controlled by the Catalonia Futsal Federation.",
+            "score": 20.724808513582232
+          },
+          {
+            "doc_id": "47876521",
+            "title": "Anarchist Protected Area",
+            "text": "Anarchist Protected Area is a 467 ha park in British Columbia, Canada, with limited public access.",
+            "score": 19.595928316633177
+          }
+        ],
+        "seen_documents": [
+          "817834",
+          "26822474",
+          "53356170",
+          "6552391",
+          "2636439",
+          "13616654",
+          "47876521"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "May Days Catalonia Anarchist Zone",
+            "doc_ids": [
+              "817834",
+              "26822474",
+              "53356170",
+              "6552391",
+              "2636439"
+            ]
+          },
+          {
+            "step": 1,
+            "query": "May Days anarchist controlled area Catalonia",
+            "doc_ids": [
+              "26822474",
+              "6552391",
+              "817834",
+              "13616654",
+              "47876521"
+            ]
+          }
+        ]
+      },
+      "query": "May Days",
+      "retrieved_docs": [
+        {
+          "doc_id": "8551171",
+          "title": "Days May Come and Days May Go",
+          "text": "Days May Come and Days May Go is a compilation album by the British hard rock band Deep Purple, released in 2000 (see 2000 in music).",
+          "score": 14.882425889645996
+        },
+        {
+          "doc_id": "908121",
+          "title": "High Holy Days",
+          "text": "The High Holidays or High Holy Days, in Judaism, more properly known as the Yamim Noraim (Hebrew: ימים נוראים‎ ‎ \"Days of Awe\"), may mean:",
+          "score": 12.944185975047208
+        },
+        {
+          "doc_id": "30306881",
+          "title": "First hundred days",
+          "text": "The term \"first hundred days\" (alternatively written \"first 100 days\") typically refers to the first hundred days in the first term of a President of the United States. It may refer to:",
+          "score": 12.903058463051513
+        },
+        {
+          "doc_id": "12690902",
+          "title": "Halcyon Days",
+          "text": "Halcyon Days is an oblique reference to the Greek mythological figure Alcyone, it may also refer to:",
+          "score": 12.837743944831189
+        },
+        {
+          "doc_id": "29454903",
+          "title": "De Gasperi IV Cabinet",
+          "text": "The De Gasperi IV Cabinet held office from 31 May 1947 until 23 May 1948, a total of 358 days, or 11 months and 22 days.",
+          "score": 12.775892632933218
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": -1,
+        "redundancy": 0.0,
+        "final_gain": -1.0
+      },
+      "answer_evaluation": {
+        "answer_before": "Revolutionary Catalonia",
+        "answer_after": "noanswer",
+        "correctness_before": 1.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 458,
+      "id": "9566d57a3c4438e934493e40",
+      "state_id": "5a7a638455429941d65f260c:2",
+      "kind": "entity",
+      "question": "\"The Tide Will Swallow Us Whole\" is the debut album by a band that announced their hiatus in what year?",
+      "state_before": {
+        "question": "\"The Tide Will Swallow Us Whole\" is the debut album by a band that announced their hiatus in what year?",
+        "active_evidence": [
+          {
+            "doc_id": "19457347",
+            "title": "The Tide Will Swallow Us Whole",
+            "text": "The Tide Will Swallow Us Whole is the debut album by Trenches. The album was originally titled \"950 Times Per Second\", possibly as a reference to the rate at which a black hole allegedly spins.",
+            "score": 47.09968829865783
+          },
+          {
+            "doc_id": "46918746",
+            "title": "Trenches (band)",
+            "text": "Trenches is a Christian metal band, formed by Haste the Day vocalist, Jimmy Ryan. The band announced their hiatus in 2010 before getting back together in early 2012.",
+            "score": 27.999795081413573
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "23257719",
+            "title": "The Place Where You Will Find Us",
+            "text": "The Place Where You Will Find Us is the debut album by the Belgian rock band Zornik. It was released in the year 2002.",
+            "score": 23.085449553319712
+          },
+          {
+            "doc_id": "39481790",
+            "title": "Don't Swallow the Cap",
+            "text": "\"Don't Swallow the Cap\" is a song by American indie rock band The National. Written by band members Matt Berninger, Aaron Dessner, and Bryce Dessner, it appears as the third track on the band's sixth studio album \"Trouble Will Find Me\". \"Don't Swallow the Cap\" was released to United States modern rock radio as the album's second overall single on April 22, 2013.",
+            "score": 22.090948523884325
+          },
+          {
+            "doc_id": "19161723",
+            "title": "Swallow Tales",
+            "text": "Swallow Tales is a 1971 album by British country rock band Cochise.",
+            "score": 20.864903792005038
+          },
+          {
+            "doc_id": "10393946",
+            "title": "Das ist nicht die ganze Wahrheit...",
+            "text": "Das ist nicht die ganze Wahrheit... [That's not the whole truth...] is the fourth album by Die Ärzte. It was the last studio album before the band's 5-year hiatus. The title of the album is a line spoken by William Shatner in the film \"\".",
+            "score": 20.585757737421677
+          },
+          {
+            "doc_id": "2493023",
+            "title": "Knock-and-announce",
+            "text": "Knock-and-announce, in United States law criminal procedure, is an ancient common law principle, incorporated into the Fourth Amendment, which requires law enforcement officers to announce their presence and provide residents with an opportunity to open the door prior to a search.",
+            "score": 18.75689355513752
+          },
+          {
+            "doc_id": "34339960",
+            "title": "Trenches 2",
+            "text": "Trenches 2 is the sequel to \"Trenches\".",
+            "score": 18.59477641767054
+          },
+          {
+            "doc_id": "3206290",
+            "title": "Check-in",
+            "text": "Check-in is the process whereby people announce their arrival at a hotel, airport, sea port, or event.",
+            "score": 17.02775121778032
+          },
+          {
+            "doc_id": "51130184",
+            "title": "We'll Carry The Star Spangled Banner Thru The Trenches",
+            "text": "We'll Carry The Star Spangled Banner Thru The Trenches",
+            "score": 16.057586770422255
+          }
+        ],
+        "seen_documents": [
+          "19457347",
+          "23257719",
+          "39481790",
+          "19161723",
+          "10393946",
+          "46918746",
+          "2493023",
+          "34339960",
+          "3206290",
+          "51130184"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "The Tide Will Swallow Us Whole\" band hiatus year",
+            "doc_ids": [
+              "19457347",
+              "23257719",
+              "39481790",
+              "19161723",
+              "10393946"
+            ]
+          },
+          {
+            "step": 1,
+            "query": "When did Trenches announce their hiatus?",
+            "doc_ids": [
+              "46918746",
+              "2493023",
+              "34339960",
+              "3206290",
+              "51130184"
+            ]
+          }
+        ]
+      },
+      "query": "Trenches",
+      "retrieved_docs": [
+        {
+          "doc_id": "34339960",
+          "title": "Trenches 2",
+          "text": "Trenches 2 is the sequel to \"Trenches\".",
+          "score": 18.59477641767054
+        },
+        {
+          "doc_id": "51130184",
+          "title": "We'll Carry The Star Spangled Banner Thru The Trenches",
+          "text": "We'll Carry The Star Spangled Banner Thru The Trenches",
+          "score": 16.057586770422255
+        },
+        {
+          "doc_id": "26572142",
+          "title": "In the Trenches",
+          "text": "\"In The Trenches\" is the first full length and first Hellcat release by Static Thought. It was released in 2007.",
+          "score": 15.723600870169793
+        },
+        {
+          "doc_id": "39552599",
+          "title": "Trenches (song)",
+          "text": "\"Trenches\" is the first single from \"Onyx\", the third studio album from hard rock band Pop Evil, and is the tenth single overall from the band.",
+          "score": 15.196797339743757
+        },
+        {
+          "doc_id": "41447551",
+          "title": "Horrible Histories: Terrible Trenches",
+          "text": "Horrible Histories: Terrible Trenches is an exhibition created in 2009 as part of the Horrible Histories franchise. It is about \"life in the terrible trenches during the First World War\", and debuted at the Imperial War Museum. It lasted from 18 July 2009 to 31 October 2010.",
+          "score": 15.122936382894068
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.4,
+        "final_gain": -0.4
+      },
+      "answer_evaluation": {
+        "answer_before": "2010",
+        "answer_after": "2010",
+        "correctness_before": 1.0,
+        "correctness_after": 1.0
+      }
+    },
+    {
+      "source_line": 286,
+      "id": "511c8fc98c4a05f982c67f17",
+      "state_id": "5a88aeb25542994846c1ceb7:2",
+      "kind": "baseline",
+      "question": "São Francisco Xavier (English: \"Saint Francis Xavier\") is a former civil parish (freguesia) in the city and municipality of Lisbon, Portugal, who was the Navarrese Basque Roman Catholic missionary, born in Javier (Xavier in Navarro-Aragonese or Xabier in Basque), Kingdom of Navarre (present day Spain), and a co-founder of the Society of Jesus?",
+      "state_before": {
+        "question": "São Francisco Xavier (English: \"Saint Francis Xavier\") is a former civil parish (freguesia) in the city and municipality of Lisbon, Portugal, who was the Navarrese Basque Roman Catholic missionary, born in Javier (Xavier in Navarro-Aragonese or Xabier in Basque), Kingdom of Navarre (present day Spain), and a co-founder of the Society of Jesus?",
+        "active_evidence": [
+          {
+            "doc_id": "21168492",
+            "title": "São Francisco Xavier (Lisbon)",
+            "text": "São Francisco Xavier (English: \"Saint Francis Xavier\") is a former civil parish (freguesia) in the city and municipality of Lisbon, Portugal. It was created on February 7, 1959. At the administrative reorganization of Lisbon on 8 December 2012 it merged with the former parish of Santa Maria de Belém, thus creating the new Belém parish.",
+            "score": 55.5376079833819
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "37048219",
+            "title": "São Francisco (Nuno Gonçalves)",
+            "text": "São Francisco (English: Saint Francis ) is a painting by Portuguese Renaissance artist Nuno Gonçalves. It is held at the National Museum of Ancient Art, in Lisbon.",
+            "score": 40.00772954063199
+          },
+          {
+            "doc_id": "15387145",
+            "title": "São Francisco",
+            "text": "São Francisco (Portuguese: \"Saint Francis\") may refer to:",
+            "score": 37.01282202762096
+          },
+          {
+            "doc_id": "51140410",
+            "title": "St. Francis Xavier College, San Paulo",
+            "text": "St. Francis Xavier College (\"Colégio São Francisco Xavier\") is a Brazilian co-educational school located in the Subprefecture of Ipiranga of the city of São Paulo. It was founded by the Jesuits in 1928 and covers kindergarten through high school.",
+            "score": 34.94768113800941
+          },
+          {
+            "doc_id": "21167874",
+            "title": "São Paulo (Lisbon)",
+            "text": "São Paulo (English: \"Saint Paul\") is a former parish (\"freguesia\") in the municipality of Lisbon, Portugal. At the administrative reorganization of Lisbon on 8 December 2012 it became part of the parish Misericórdia.",
+            "score": 34.78503344777688
+          },
+          {
+            "doc_id": "51820631",
+            "title": "São Francisco Xavier Environmental Protection Area",
+            "text": "São Francisco Xavier Environmental Protection Area",
+            "score": 34.431633046737076
+          },
+          {
+            "doc_id": "38346992",
+            "title": "Francisco Javier Lampillas",
+            "text": "Francisco Javier Lampillas or Xavier Llampillas, born as Francisco Javier Cerdá (Mataró, Spain 1731 - Sesti, Italia, 1810) was a Jesuit scholar and author.",
+            "score": 33.12297163432996
+          },
+          {
+            "doc_id": "2902972",
+            "title": "São Francisco Xavier",
+            "text": "São Francisco Xavier is a village and an administrative district in the municipality of São José dos Campos, São Paulo State, Brazil.",
+            "score": 33.0214749932201
+          },
+          {
+            "doc_id": "31439556",
+            "title": "São Francisco Xavier, Rio de Janeiro",
+            "text": "São Francisco Xavier is a neighborhood in the North Zone of Rio de Janeiro, Brazil.",
+            "score": 32.2529659504917
+          },
+          {
+            "doc_id": "5302511",
+            "title": "Francisco Javier Alegre",
+            "text": "Francisco Xavier Alegre (November 12, 1729 – August 16, 1788) was a Jesuit scholar, translator, and historian of New Spain.",
+            "score": 29.21449125262409
+          }
+        ],
+        "seen_documents": [
+          "21168492",
+          "37048219",
+          "15387145",
+          "51140410",
+          "21167874",
+          "51820631",
+          "38346992",
+          "2902972",
+          "31439556",
+          "5302511"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "São Francisco Xavier (Saint Francis Xavier) Lisbon parish history",
+            "doc_ids": [
+              "21168492",
+              "37048219",
+              "15387145",
+              "51140410",
+              "21167874"
+            ]
+          },
+          {
+            "step": 1,
+            "query": "São Francisco Xavier (Javier) biography",
+            "doc_ids": [
+              "51820631",
+              "38346992",
+              "2902972",
+              "31439556",
+              "5302511"
+            ]
+          }
+        ]
+      },
+      "query": "São Francisco Xavier (Basque missionary) biography",
+      "retrieved_docs": [
+        {
+          "doc_id": "51820631",
+          "title": "São Francisco Xavier Environmental Protection Area",
+          "text": "São Francisco Xavier Environmental Protection Area",
+          "score": 34.431633046737076
+        },
+        {
+          "doc_id": "2902972",
+          "title": "São Francisco Xavier",
+          "text": "São Francisco Xavier is a village and an administrative district in the municipality of São José dos Campos, São Paulo State, Brazil.",
+          "score": 33.0214749932201
+        },
+        {
+          "doc_id": "31439556",
+          "title": "São Francisco Xavier, Rio de Janeiro",
+          "text": "São Francisco Xavier is a neighborhood in the North Zone of Rio de Janeiro, Brazil.",
+          "score": 32.2529659504917
+        },
+        {
+          "doc_id": "3367385",
+          "title": "Xavier Dirceu",
+          "text": "Dirceu Francisco Xavier (born December 18, 1977 in Cabo Frio), nicknamed Xavier Dirceu or just Xavier, and sometimes misspelled Xavier Dirção, is a Brazilian football player currently playing for São Bernardo.",
+          "score": 28.160497150494507
+        },
+        {
+          "doc_id": "10600842",
+          "title": "Vicente Francisco de Sarría",
+          "text": "Father Vicente Francisco de Sarría (1767 Etxebarri – 1835 Soledad) was a Basque Spanish missionary to the Americas.",
+          "score": 27.771365651698638
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.6,
+        "final_gain": -0.6
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "noanswer",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 210,
+      "id": "c8d804fb12452792a6ff9d43",
+      "state_id": "5ac3bc72554299391541391c:0",
+      "kind": "baseline",
+      "question": " Botanic Park, Adelaide abuts the zoo that is administered by what group?",
+      "state_before": {
+        "question": " Botanic Park, Adelaide abuts the zoo that is administered by what group?",
+        "active_evidence": [],
+        "backup_evidence": [],
+        "seen_documents": [],
+        "retrieval_history": []
+      },
+      "query": "Botanic Park, Adelaide zoo administration",
+      "retrieved_docs": [
+        {
+          "doc_id": "2050237",
+          "title": "Adelaide Botanic Garden",
+          "text": "The Adelaide Botanic Garden is a 51 ha public garden at the north-east corner of the Adelaide city centre, in the Adelaide Park Lands. It encompasses a fenced garden on North Terrace (between the Royal Adelaide Hospital and the National Wine Centre) and behind it the Botanic Park (adjacent to the Adelaide Zoo). The Adelaide Botanic Garden and adjacent State Herbarium, together with the Wittunga and Mt Lofty Botanic Gardens, are administered by the Botanic Gardens of South Australia, a State Government statutory authority.",
+          "score": 36.89731134446077
+        },
+        {
+          "doc_id": "5730383",
+          "title": "Botanic Park, Adelaide",
+          "text": "Botanic Park, which is a part of Park 11 and also known by its Kaurna name Tainmundilla, is a 34 hectare (84 acre) park in the Northeast Parklands of the South Australian capital of Adelaide. It is bordered by Hackney and Frome Roads. The park abuts the Adelaide Zoo and River Torrens on its northern side and an avenue of Plane Trees planted in 1874 to its southern side. It is dotted with exotic species such as century-old Moreton Bay Figs from Queensland.",
+          "score": 31.509945403612925
+        },
+        {
+          "doc_id": "1207224",
+          "title": "Mesker Park Zoo and Botanic Garden",
+          "text": "The Mesker Park Zoo and Botanic Garden is a zoo that opened in 1928 in Evansville, Indiana. It is one of the oldest and largest zoos in the state. Set in a 50 acre park, the zoo features 200 species and more than 700 animals roaming freely in natural habitats surrounded by exotic plants, wildflowers, and trees.",
+          "score": 29.93832166774492
+        },
+        {
+          "doc_id": "9531504",
+          "title": "Botanic Gardens and Parks Authority",
+          "text": "The Botanic Gardens and Parks Authority is a Western Australian Government authority charged with the administration of Kings Park and Bold Park.",
+          "score": 27.499930256455176
+        },
+        {
+          "doc_id": "7695922",
+          "title": "Emperor Valley Zoo",
+          "text": "The Emperor Valley Zoo abbreviated \"EVZ\" is the biggest zoo in Trinidad and Tobago. It is located North of the Queen's Park Savannah and West of the Royal Botanic Gardens in Port of Spain.",
+          "score": 27.10710022947982
+        }
+      ],
+      "labels": {
+        "local_gain": 0.5,
+        "answer_gain": 0,
+        "redundancy": 0.0,
+        "final_gain": 0.5
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "noanswer",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 1117,
+      "id": "b0806c8912da78eb5b9afade",
+      "state_id": "5ab8258355429916710eb003:0",
+      "kind": "entity",
+      "question": "What was the middle name of the player who broke Babe Ruth's 34-year-old single-season record for home runs?",
+      "state_before": {
+        "question": "What was the middle name of the player who broke Babe Ruth's 34-year-old single-season record for home runs?",
+        "active_evidence": [],
+        "backup_evidence": [],
+        "seen_documents": [],
+        "retrieval_history": []
+      },
+      "query": "Babe Ruth's",
+      "retrieved_docs": [
+        {
+          "doc_id": "33075502",
+          "title": "Babe's Dream",
+          "text": "The Babe's Dream is a bronze statue of Babe Ruth, by Susan Luery.",
+          "score": 29.44207596457767
+        },
+        {
+          "doc_id": "36627115",
+          "title": "Babe Ruth League",
+          "text": "The Babe Ruth League is an international youth baseball and softball league based in Hamilton, New Jersey, named after George Herman \"Babe\" Ruth.",
+          "score": 28.931034697753464
+        },
+        {
+          "doc_id": "6113396",
+          "title": "Babe Ruth Award",
+          "text": "The Babe Ruth Award, named in honor of star player Babe Ruth, is given annually to the Major League Baseball (MLB) player with the best performance in the postseason.",
+          "score": 28.08816706540188
+        },
+        {
+          "doc_id": "11554761",
+          "title": "Dorothy Ruth",
+          "text": "Dorothy Helen Ruth Pirone (June 7, 1921 – May 18, 1989) was the biological daughter of Babe Ruth and his mistress Juanita Jennings (born Juanita Grenandtz). She was adopted by Babe and his first wife, Helen Woodward Ruth. She wrote a memoir of her father, titled \"My Dad, the Babe\".",
+          "score": 26.632048893156227
+        },
+        {
+          "doc_id": "3805852",
+          "title": "Babe Ruth (band)",
+          "text": "Babe Ruth are a rock band from Hatfield, Hertfordshire, England. They were initially active in the 1970s and reformed in 2005.",
+          "score": 26.553022891009725
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.0,
+        "final_gain": 0.0
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "noanswer",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 179,
+      "id": "7b09ba0992b11ee6933e3fed",
+      "state_id": "5ae7108c5542995703ce8bc5:1",
+      "kind": "question_rewrite",
+      "question": "What is the name of the motorsport team, best known for Formula One, founded in 1968, and which uses a car designed by Michel Tetu and Michel Beaujon built with a Megatron Straight 4 turbo engine?",
+      "state_before": {
+        "question": "What is the name of the motorsport team, best known for Formula One, founded in 1968, and which uses a car designed by Michel Tetu and Michel Beaujon built with a Megatron Straight 4 turbo engine?",
+        "active_evidence": [
+          {
+            "doc_id": "28569060",
+            "title": "Ligier JS29",
+            "text": "The Ligier JS29 was a Formula One car designed by Michel Tétu and Michel Beaujon for the Ligier team for use in the season. It was originally developed for use with an Alfa Romeo turbo power plant but prior to the start of the season, Ligier lost the use of the engine. The car had to be re-designed around a Megatron Straight 4 turbo engine. Redesignated the JS29B, it scored a single point during the season when driver Rene Arnoux finished 6th in the Belgian Grand Prix. Later in the season, the car was further refined to a JS29C specification.",
+            "score": 32.60247344312643
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "28429850",
+            "title": "Zakspeed 881",
+            "text": "The Zakspeed 881 was a Formula One car designed by Chris Murphy and Heinz Zollner and raced by Zakspeed in the 1988 Formula One season. The car was the last to be powered by the team's own 1.5 litre straight 4 turbo engine, the 1500/4. The car was driven by veteran Piercarlo Ghinzani and West German F1 rookie Bernd Schneider.",
+            "score": 25.894437773320583
+          },
+          {
+            "doc_id": "882103",
+            "title": "BMW M88",
+            "text": "The BMW M88 is a straight-6 DOHC petrol engine which was produced from 1978-1989. It is based on the M49 motorsport engine, which was used in the BMW 3.0CSi.",
+            "score": 25.783074251431373
+          },
+          {
+            "doc_id": "7726236",
+            "title": "AMC straight-4 engine",
+            "text": "The American Motors Corporation straight-4 engine was used by a number of AMC, Jeep, and Dodge vehicles from 1984 to 2002.",
+            "score": 25.378827124292393
+          },
+          {
+            "doc_id": "7105999",
+            "title": "BMW N53",
+            "text": "The BMW N53 is a straight 6 DOHC piston engine which was produced from 2006 to 2011. It is the final naturally aspirated straight-6 engine produced by BMW, ending a history of continuous production of this engine configuration since 1968. The N53 released in 2006 in the facelifted E60/E61 523i and 525i. Following the introduction of the N20 turbocharged straight-4 engine in 2011, the N53 began to be phased out. The N54 turbocharged straight-6 engine was produced alongside the N53, therefore the N54 took over as the highest performance six-cylinder engine.",
+            "score": 25.1275553977882
+          }
+        ],
+        "seen_documents": [
+          "28569060",
+          "28429850",
+          "882103",
+          "7726236",
+          "7105999"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "Motorsport team founded in 1968 with Megatron Straight 4 turbo engine",
+            "doc_ids": [
+              "28569060",
+              "28429850",
+              "882103",
+              "7726236",
+              "7105999"
+            ]
+          }
+        ]
+      },
+      "query": "Ligier Formula One team 1968 Megatron Straight 4 turbo engine",
+      "retrieved_docs": [
+        {
+          "doc_id": "28569060",
+          "title": "Ligier JS29",
+          "text": "The Ligier JS29 was a Formula One car designed by Michel Tétu and Michel Beaujon for the Ligier team for use in the season. It was originally developed for use with an Alfa Romeo turbo power plant but prior to the start of the season, Ligier lost the use of the engine. The car had to be re-designed around a Megatron Straight 4 turbo engine. Redesignated the JS29B, it scored a single point during the season when driver Rene Arnoux finished 6th in the Belgian Grand Prix. Later in the season, the car was further refined to a JS29C specification.",
+          "score": 54.11593708618125
+        },
+        {
+          "doc_id": "42660375",
+          "title": "Ligier JS21",
+          "text": "The Ligier JS21 was a Formula One racing car manufactured and raced by Ligier during the 1983 Formula One season. Powered by a Cosworth V8 engine while the majority of teams used turbo power, the team failed to score any points.",
+          "score": 48.832490431751204
+        },
+        {
+          "doc_id": "24726570",
+          "title": "Equipe Ligier",
+          "text": "Equipe Ligier is a motorsport team, best known for its Formula One team that operated from to . The team was founded in 1968 by former French rugby union player Guy Ligier as a sports car manufacturer.",
+          "score": 38.61107015727405
+        },
+        {
+          "doc_id": "9406226",
+          "title": "Ligier JS39",
+          "text": "The Ligier JS39 was a Formula One car used by the Ligier team during the 1993 and 1994 Formula One seasons.",
+          "score": 37.69049811191439
+        },
+        {
+          "doc_id": "14733455",
+          "title": "Ligier JS27",
+          "text": "The Ligier JS27 was the Formula One car used by French team Ligier team competed in the season.",
+          "score": 36.808480481606644
+        }
+      ],
+      "labels": {
+        "local_gain": 0.5,
+        "answer_gain": 0,
+        "redundancy": 0.2,
+        "final_gain": 0.3
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "yes",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 1210,
+      "id": "891717e082d46583df934cec",
+      "state_id": "5ae78ccc5542997ec27276a0:0",
+      "kind": "entity",
+      "question": "What primarily competed with Nintendo 64 and Sega Staurn has a horror-themed adventure game published by Jaleco in 1999?",
+      "state_before": {
+        "question": "What primarily competed with Nintendo 64 and Sega Staurn has a horror-themed adventure game published by Jaleco in 1999?",
+        "active_evidence": [],
+        "backup_evidence": [],
+        "seen_documents": [],
+        "retrieval_history": []
+      },
+      "query": "Nintendo",
+      "retrieved_docs": [
+        {
+          "doc_id": "1296502",
+          "title": "MII",
+          "text": "A Mii is a personalized digital avatar for Nintendo's Wii, Nintendo DS, Nintendo 3DS, Wii U, Nintendo 2DS and Nintendo Switch video game consoles.",
+          "score": 13.509106439009306
+        },
+        {
+          "doc_id": "26678302",
+          "title": "Nintendo DS (disambiguation)",
+          "text": "The Nintendo DS is a handheld video game system by Nintendo. Nintendo DS may also refer to:",
+          "score": 13.379706284065623
+        },
+        {
+          "doc_id": "3048405",
+          "title": "Official Nintendo Magazine",
+          "text": "Official Nintendo Magazine, or ONM, is a retired British video game magazine which covered the Nintendo DS, Nintendo 3DS, Wii and Wii U video game consoles released by Nintendo.",
+          "score": 13.248790046461117
+        },
+        {
+          "doc_id": "8696887",
+          "title": "MoonShell",
+          "text": "MoonShell is a homebrew multimedia player for the Sony PSP, Nintendo DS, Nintendo DS lite, Nintendo DSi, and Nintendo 3DS. It is a well-known, popular piece of Nintendo DS homebrew software,",
+          "score": 13.206376234273744
+        },
+        {
+          "doc_id": "3122609",
+          "title": "Nintendo Player's Guide",
+          "text": "The Nintendo Player’s Guides are a series of video game strategy guides from Nintendo based on \"Nintendo Power\" magazine.",
+          "score": 13.16619332607265
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.0,
+        "final_gain": 0.0
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "noanswer",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 865,
+      "id": "ef4ae899e1984de04d9c245d",
+      "state_id": "5ae41f3b55429970de88d905:2",
+      "kind": "entity",
+      "question": "Knocked Up is an American romantic comedy film, released in which year, and stars include Paul Rudd, an American actor, comedian, writer, and producer?",
+      "state_before": {
+        "question": "Knocked Up is an American romantic comedy film, released in which year, and stars include Paul Rudd, an American actor, comedian, writer, and producer?",
+        "active_evidence": [
+          {
+            "doc_id": "4295195",
+            "title": "Knocked Up",
+            "text": "Knocked Up is a 2007 American romantic comedy film written, directed, and co-produced by Judd Apatow, and starring Seth Rogen, Katherine Heigl, Paul Rudd, and Leslie Mann. It follows the repercussions of a drunken one-night stand between a slacker and a just-promoted media personality that results in an unintended pregnancy.",
+            "score": 16.61633193455643
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "27557206",
+            "title": "The 41-Year-Old Virgin Who Knocked Up Sarah Marshall and Felt Superbad About It",
+            "text": "The 41-Year-Old Virgin Who Knocked Up Sarah Marshall and Felt Superbad About It",
+            "score": 24.89513731780426
+          },
+          {
+            "doc_id": "41167920",
+            "title": "Shaiju Mathew",
+            "text": "Shaiju Mathew (born 1980) is an Indian author, screenplay writer, movie reviewer and director, known for his 2010 book \"Knocked Up\". \"Knocked Up\" is set to become a feature film in Hindi, with Mathew co-producing. A Marathi movie \"Timepass\" loosely based on \"Knocked Up\" released in February 2014. The film was the highest grossing Marathi film until the release of Lai Bhaari in the same year, which broke its record. Andhra Pori starring Puri Akash son of Puri Jagannadh is also based on Mathew's novel \"Knocked Up\".",
+            "score": 24.674461087760978
+          },
+          {
+            "doc_id": "11604358",
+            "title": "Shauna Robertson",
+            "text": "Shauna Robertson (born circa 1975) is a Canadian film producer. She has worked frequently with Judd Apatow, and has produced a number of films for Apatow Productions, including \"\", \"The 40-Year-Old Virgin\", \"Knocked Up\", \"Superbad\", \"Forgetting Sarah Marshall\" and \"Pineapple Express\".",
+            "score": 16.729840628259705
+          },
+          {
+            "doc_id": "30656210",
+            "title": "Ambikapathy (1957 film)",
+            "text": "Ambikapathy (also spelled Ambikapathi) is a Tamil film starring Sivaji Ganesan and P. Bhanumathi as the main cast. The film was released in the year 1957.",
+            "score": 16.523451542322626
+          },
+          {
+            "doc_id": "47297969",
+            "title": "Paul Rudd (disambiguation)",
+            "text": "Paul Rudd (born 1969) is an American actor known for comedies",
+            "score": 24.781578847177357
+          },
+          {
+            "doc_id": "50633765",
+            "title": "List of awards and nominations received by Paul Rudd",
+            "text": "List of awards and nominations received by Paul Rudd",
+            "score": 24.06964817312719
+          }
+        ],
+        "seen_documents": [
+          "27557206",
+          "41167920",
+          "11604358",
+          "4295195",
+          "30656210",
+          "47297969",
+          "50633765"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "Knocked Up release year and main cast",
+            "doc_ids": [
+              "27557206",
+              "41167920",
+              "11604358",
+              "4295195",
+              "30656210"
+            ]
+          },
+          {
+            "step": 1,
+            "query": "Knocked Up release year Paul Rudd",
+            "doc_ids": [
+              "4295195",
+              "27557206",
+              "47297969",
+              "41167920",
+              "50633765"
+            ]
+          }
+        ]
+      },
+      "query": "Knocked Up",
+      "retrieved_docs": [
+        {
+          "doc_id": "27557206",
+          "title": "The 41-Year-Old Virgin Who Knocked Up Sarah Marshall and Felt Superbad About It",
+          "text": "The 41-Year-Old Virgin Who Knocked Up Sarah Marshall and Felt Superbad About It",
+          "score": 19.36308895714931
+        },
+        {
+          "doc_id": "41167920",
+          "title": "Shaiju Mathew",
+          "text": "Shaiju Mathew (born 1980) is an Indian author, screenplay writer, movie reviewer and director, known for his 2010 book \"Knocked Up\". \"Knocked Up\" is set to become a feature film in Hindi, with Mathew co-producing. A Marathi movie \"Timepass\" loosely based on \"Knocked Up\" released in February 2014. The film was the highest grossing Marathi film until the release of Lai Bhaari in the same year, which broke its record. Andhra Pori starring Puri Akash son of Puri Jagannadh is also based on Mathew's novel \"Knocked Up\".",
+          "score": 18.43737805441066
+        },
+        {
+          "doc_id": "4295195",
+          "title": "Knocked Up",
+          "text": "Knocked Up is a 2007 American romantic comedy film written, directed, and co-produced by Judd Apatow, and starring Seth Rogen, Katherine Heigl, Paul Rudd, and Leslie Mann. It follows the repercussions of a drunken one-night stand between a slacker and a just-promoted media personality that results in an unintended pregnancy.",
+          "score": 16.61633193455643
+        },
+        {
+          "doc_id": "4929156",
+          "title": "Levity (soundtrack)",
+          "text": "Levity is a soundtrack produced by Mark Oliver Everett for the 2003 film of the same name. Two of the tracks were used for the film \"Knocked Up\".",
+          "score": 14.861227796235319
+        },
+        {
+          "doc_id": "10680095",
+          "title": "Strange Weirdos",
+          "text": "Strange Weirdos: Music from and Inspired by the Film Knocked Up is the official soundtrack album to the 2007 Judd Apatow film \"Knocked Up\", and the eighteenth studio album by American singer-songwriter Loudon Wainwright III, released on May 22, 2007 on Concord Records. The album was co-produced by Joe Henry and Wainwright. Guests featured on the album include multi-instrumentalist Greg Leisz, Van Dyke Parks, bassist David Pilch, Richard Thompson and Patrick Warren.",
+          "score": 14.772269967063146
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.6,
+        "final_gain": -0.6
+      },
+      "answer_evaluation": {
+        "answer_before": "2007",
+        "answer_after": "2007",
+        "correctness_before": 1.0,
+        "correctness_after": 1.0
+      }
+    },
+    {
+      "source_line": 66,
+      "id": "6904a00805a0024fdd0c8d16",
+      "state_id": "5a7782a55542992a6e59dea6:1",
+      "kind": "question_rewrite",
+      "question": "Which British rock musician moved to Polydor Records in 1966",
+      "state_before": {
+        "question": "Which British rock musician moved to Polydor Records in 1966",
+        "active_evidence": [
+          {
+            "doc_id": "1528126",
+            "title": "The Who discography",
+            "text": "The Who have been with several labels over the years. In the United Kingdom and elsewhere outside North America, they were signed originally to Brunswick Records. In 1966, they moved to Polydor Records and took the rights to their Brunswick recordings with them. They created and moved to Track Records the following year with distribution by Polydor. They left Track in 1974 and returned to Polydor directly, remaining with the label ever since.",
+            "score": 28.497031191958982
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "2828638",
+            "title": "Eric Clapton (album)",
+            "text": "Eric Clapton is the debut solo album from British rock musician Eric Clapton, released in August 1970 under Atco and Polydor Records.",
+            "score": 25.41357277824168
+          },
+          {
+            "doc_id": "36872283",
+            "title": "Guardian Angel (album)",
+            "text": "Guardian Angel is the sixteenth rock album by British instrumental (and sometimes vocal) group The Shadows, released in November, 1984 through Polydor Records.",
+            "score": 25.144716197940845
+          },
+          {
+            "doc_id": "201370",
+            "title": "Polydor Records",
+            "text": "Polydor is a British record label and company, that operates as part of Universal Music Group. It has a close relationship with Universal's Interscope Geffen A&M Records label, which distributes Polydor's releases in the United States. In turn, Polydor distributes Interscope releases in the United Kingdom. Polydor Records Ltd. was established in London in 1954 as a British subsidiary of German company Deutsche Grammophon GmbH. It was renamed Polydor Ltd. in 1972.",
+            "score": 24.7586645298013
+          },
+          {
+            "doc_id": "32334202",
+            "title": "Change of Address (The Shadows album)",
+            "text": "Change of Address is the thirteenth rock album by British instrumental (and sometimes vocal) group The Shadows, released in 1980 through Polydor Records.",
+            "score": 24.37122813569891
+          }
+        ],
+        "seen_documents": [
+          "1528126",
+          "2828638",
+          "36872283",
+          "201370",
+          "32334202"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "British rock musicians who moved to Polydor Records in 1966",
+            "doc_ids": [
+              "1528126",
+              "2828638",
+              "36872283",
+              "201370",
+              "32334202"
+            ]
+          }
+        ]
+      },
+      "query": "British rock musician signed to Polydor Records in 1966",
+      "retrieved_docs": [
+        {
+          "doc_id": "2828638",
+          "title": "Eric Clapton (album)",
+          "text": "Eric Clapton is the debut solo album from British rock musician Eric Clapton, released in August 1970 under Atco and Polydor Records.",
+          "score": 31.634384901842324
+        },
+        {
+          "doc_id": "24685437",
+          "title": "Bronco (English band)",
+          "text": "Bronco were an English rock/country band signed to Island & Polydor Records 1969-1973.",
+          "score": 30.61658931152285
+        },
+        {
+          "doc_id": "4250034",
+          "title": "List of Polydor Records artists",
+          "text": "This is a list of artists that are currently, or once were, signed to Polydor Records.",
+          "score": 28.322879048890588
+        },
+        {
+          "doc_id": "1528126",
+          "title": "The Who discography",
+          "text": "The Who have been with several labels over the years. In the United Kingdom and elsewhere outside North America, they were signed originally to Brunswick Records. In 1966, they moved to Polydor Records and took the rights to their Brunswick recordings with them. They created and moved to Track Records the following year with distribution by Polydor. They left Track in 1974 and returned to Polydor directly, remaining with the label ever since.",
+          "score": 26.60881137824871
+        },
+        {
+          "doc_id": "47541809",
+          "title": "Blues Power",
+          "text": "\"Blues Power\" is the second solo single by British rock musician Eric Clapton, off his 1970 debut studio album \"Eric Clapton\". It was released in 1970 as a 7\" vinyl gramophone record under Polydor Records. The song never reached any of the music charts worldwide.",
+          "score": 25.61007321902881
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.4,
+        "final_gain": -0.4
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "noanswer",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 62,
+      "id": "46500004ddfce1e98ad0f794",
+      "state_id": "5a7782a55542992a6e59dea6:1",
+      "kind": "baseline",
+      "question": "Which British rock musician moved to Polydor Records in 1966",
+      "state_before": {
+        "question": "Which British rock musician moved to Polydor Records in 1966",
+        "active_evidence": [
+          {
+            "doc_id": "1528126",
+            "title": "The Who discography",
+            "text": "The Who have been with several labels over the years. In the United Kingdom and elsewhere outside North America, they were signed originally to Brunswick Records. In 1966, they moved to Polydor Records and took the rights to their Brunswick recordings with them. They created and moved to Track Records the following year with distribution by Polydor. They left Track in 1974 and returned to Polydor directly, remaining with the label ever since.",
+            "score": 28.497031191958982
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "2828638",
+            "title": "Eric Clapton (album)",
+            "text": "Eric Clapton is the debut solo album from British rock musician Eric Clapton, released in August 1970 under Atco and Polydor Records.",
+            "score": 25.41357277824168
+          },
+          {
+            "doc_id": "36872283",
+            "title": "Guardian Angel (album)",
+            "text": "Guardian Angel is the sixteenth rock album by British instrumental (and sometimes vocal) group The Shadows, released in November, 1984 through Polydor Records.",
+            "score": 25.144716197940845
+          },
+          {
+            "doc_id": "201370",
+            "title": "Polydor Records",
+            "text": "Polydor is a British record label and company, that operates as part of Universal Music Group. It has a close relationship with Universal's Interscope Geffen A&M Records label, which distributes Polydor's releases in the United States. In turn, Polydor distributes Interscope releases in the United Kingdom. Polydor Records Ltd. was established in London in 1954 as a British subsidiary of German company Deutsche Grammophon GmbH. It was renamed Polydor Ltd. in 1972.",
+            "score": 24.7586645298013
+          },
+          {
+            "doc_id": "32334202",
+            "title": "Change of Address (The Shadows album)",
+            "text": "Change of Address is the thirteenth rock album by British instrumental (and sometimes vocal) group The Shadows, released in 1980 through Polydor Records.",
+            "score": 24.37122813569891
+          }
+        ],
+        "seen_documents": [
+          "1528126",
+          "2828638",
+          "36872283",
+          "201370",
+          "32334202"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "British rock musicians who moved to Polydor Records in 1966",
+            "doc_ids": [
+              "1528126",
+              "2828638",
+              "36872283",
+              "201370",
+              "32334202"
+            ]
+          }
+        ]
+      },
+      "query": "The Who members and Polydor Records transition in 1966",
+      "retrieved_docs": [
+        {
+          "doc_id": "1528126",
+          "title": "The Who discography",
+          "text": "The Who have been with several labels over the years. In the United Kingdom and elsewhere outside North America, they were signed originally to Brunswick Records. In 1966, they moved to Polydor Records and took the rights to their Brunswick recordings with them. They created and moved to Track Records the following year with distribution by Polydor. They left Track in 1974 and returned to Polydor directly, remaining with the label ever since.",
+          "score": 22.201317318544096
+        },
+        {
+          "doc_id": "4250034",
+          "title": "List of Polydor Records artists",
+          "text": "This is a list of artists that are currently, or once were, signed to Polydor Records.",
+          "score": 21.20761470322699
+        },
+        {
+          "doc_id": "201370",
+          "title": "Polydor Records",
+          "text": "Polydor is a British record label and company, that operates as part of Universal Music Group. It has a close relationship with Universal's Interscope Geffen A&M Records label, which distributes Polydor's releases in the United States. In turn, Polydor distributes Interscope releases in the United Kingdom. Polydor Records Ltd. was established in London in 1954 as a British subsidiary of German company Deutsche Grammophon GmbH. It was renamed Polydor Ltd. in 1972.",
+          "score": 20.770346224287422
+        },
+        {
+          "doc_id": "38262023",
+          "title": "Rare, Precious and Beautiful, Volume 2",
+          "text": "Rare, Precious and Beautiful, Volume 2 is a compilation released by the Bee Gees in 1968 on Polydor Records in the UK and Karussell Records in Germany. The album was released in the US on Atco Records in 1970. The songs were recorded between 1963 and 1966.",
+          "score": 19.771018368970708
+        },
+        {
+          "doc_id": "22328920",
+          "title": "Marmalade Records",
+          "text": "Marmalade Records was a short-lived British independent record label (distributed by Polydor). Started by Swiss-resident Georgian pop impresario and ex-manager of both the Rolling Stones and the Yardbirds Giorgio Gomelsky in 1966, it released records by artists including Julie Driscoll and Brian Auger and The Trinity, who jointly reached No.",
+          "score": 19.499995813839504
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.4,
+        "final_gain": -0.4
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "noanswer",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 192,
+      "id": "d209a306defdbb227b73fc75",
+      "state_id": "5adc92c25542994ed6169b98:1",
+      "kind": "question_rewrite",
+      "question": "In which year was Emperor Akihito's eldest son's only daughter born?",
+      "state_before": {
+        "question": "In which year was Emperor Akihito's eldest son's only daughter born?",
+        "active_evidence": [
+          {
+            "doc_id": "1122397",
+            "title": "Aiko, Princess Toshi",
+            "text": "Aiko, Princess Toshi (敬宮愛子内親王 , Toshi-no-miya Aiko Naishinnō , born 1 December 2001) is the only child of Crown Prince Naruhito and Crown Princess Masako of Japan.",
+            "score": 31.46632368759716
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "1122705",
+            "title": "Aiko (singer)",
+            "text": "Aiko Yanai (柳井愛子 , Yanai Aiko , born November 22, 1975) , known by her stage name Aiko, (stylized as aiko) is a Japanese pop singer and songwriter.",
+            "score": 22.28093915801595
+          },
+          {
+            "doc_id": "8611240",
+            "title": "Aiko Asano",
+            "text": "Aiko Asano (浅野 愛子 , Asano Aiko , born March 2, 1969) , is a Japanese actress and singer.",
+            "score": 21.65203695477637
+          },
+          {
+            "doc_id": "48616224",
+            "title": "Aiko Hayashi",
+            "text": "Aiko Hayashi (林 愛子 , Hayashi Aiko , born 17 November 1993) is a Japanese competitor in synchronized swimming.",
+            "score": 21.525019379552376
+          },
+          {
+            "doc_id": "20866137",
+            "title": "Aiko Onozawa",
+            "text": "Aiko Onozawa (小野沢 愛子 , Onozawa Aiko , born 1939) is a Japanese former volleyball player who competed in the 1968 Summer Olympics.",
+            "score": 21.03301616981268
+          }
+        ],
+        "seen_documents": [
+          "1122397",
+          "1122705",
+          "8611240",
+          "48616224",
+          "20866137"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "When was Princess Aiko born?",
+            "doc_ids": [
+              "1122397",
+              "1122705",
+              "8611240",
+              "48616224",
+              "20866137"
+            ]
+          }
+        ]
+      },
+      "query": "Emperor Akihito's eldest son's only daughter birth year",
+      "retrieved_docs": [
+        {
+          "doc_id": "54305333",
+          "title": "Prince Nobuhiko Higashikuni",
+          "text": "Prince Nobuhiko Higashikuni (b. 東久邇 信彦; 10 March 1945）is a Japanese aristocrat. The eldest grandson of Emperor Hirohito, he is the eldest son of Shigeko, Princess Teru (the eldest daughter of Emperor Hirohito, and eldest sister of present Emperor Akihito) and Prince Morihiro Higashikuni, a grandson of Emperor Meiji. He is nephew of reigning Emperor Akihito.",
+          "score": 45.77190085713625
+        },
+        {
+          "doc_id": "20406378",
+          "title": "Shigeko Higashikuni",
+          "text": "Shigeko Higashikuni (東久邇成子 , Higashikuni Shigeko , 6 December 1925 – 23 July 1961) , born Shigeko, Princess Teru (照宮成子内親王 , Teru-no-miya Shigeko Naishinnō ) , was the wife of Prince Morihiro Higashikuni and eldest daughter of Emperor Shōwa and Empress Kōjun. She was the eldest sister to the present Emperor of Japan, Emperor Akihito.",
+          "score": 35.298170657695266
+        },
+        {
+          "doc_id": "3386472",
+          "title": "Princess Kako of Akishino",
+          "text": "Princess Kako of Akishino (佳子内親王 , Kako Naishinnō , born 29 December 1994) is the second daughter of Fumihito, Prince Akishino and Kiko, Princess Akishino, and a member of the Japanese Imperial Family. She is the second-eldest grandchild of Emperor Akihito and Empress Michiko.",
+          "score": 30.28238774979227
+        },
+        {
+          "doc_id": "1954564",
+          "title": "Princess Mako of Akishino",
+          "text": "Princess Mako of Akishino (眞子内親王 , Mako Naishinnō , born 23 October 1991) is the first child and oldest daughter of Fumihito, Prince Akishino and Kiko, Princess Akishino, and a member of the Japanese Imperial Family. She is the eldest grandchild of Emperor Akihito and Empress Michiko.",
+          "score": 29.767050940578724
+        },
+        {
+          "doc_id": "9872599",
+          "title": "Mihail of Bulgaria",
+          "text": "Mihail (Bulgarian: Михаил ) or Michael was the eldest son of Emperor Simeon I The Great. The date of his birth is unknown, but it is before 900. Mihail was born to Simeon's first wife.",
+          "score": 28.27664002965411
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.0,
+        "final_gain": 0.0
+      },
+      "answer_evaluation": {
+        "answer_before": "2001",
+        "answer_after": "2001",
+        "correctness_before": 1.0,
+        "correctness_after": 1.0
+      }
+    },
+    {
+      "source_line": 448,
+      "id": "112c245311b72d29a88c33f5",
+      "state_id": "5a7a638455429941d65f260c:0",
+      "kind": "entity",
+      "question": "\"The Tide Will Swallow Us Whole\" is the debut album by a band that announced their hiatus in what year?",
+      "state_before": {
+        "question": "\"The Tide Will Swallow Us Whole\" is the debut album by a band that announced their hiatus in what year?",
+        "active_evidence": [],
+        "backup_evidence": [],
+        "seen_documents": [],
+        "retrieval_history": []
+      },
+      "query": "The Tide Will Swallow Us Whole",
+      "retrieved_docs": [
+        {
+          "doc_id": "19457347",
+          "title": "The Tide Will Swallow Us Whole",
+          "text": "The Tide Will Swallow Us Whole is the debut album by Trenches. The album was originally titled \"950 Times Per Second\", possibly as a reference to the rate at which a black hole allegedly spins.",
+          "score": 47.09968829865783
+        },
+        {
+          "doc_id": "427141",
+          "title": "Mosque swallow",
+          "text": "The mosque swallow (\"Cecropis senegalensis)\", is a large swallow. It is a resident breeder in much of Sub-Saharan Africa, although most common in the west. It does not migrate, but will follow the rains to some extent.",
+          "score": 19.84206319950861
+        },
+        {
+          "doc_id": "47708957",
+          "title": "Cladodus",
+          "text": "Cladodus is an extinct genus of cartilaginous fishes in the family Cladoselachidae. As the name implies, they are a type of cladodont, primitive sharks with teeth designed to snag fish and swallow them whole, instead of sawing off chunks to swallow.",
+          "score": 19.53373581755738
+        },
+        {
+          "doc_id": "29767338",
+          "title": "2011 Alabama Crimson Tide baseball team",
+          "text": "The 2011 Alabama Crimson Tide baseball team will represent the University of Alabama in the 2011 NCAA Division I baseball season. The Crimson Tide play their home games in Sewell-Thomas Stadium.",
+          "score": 18.353083842739345
+        },
+        {
+          "doc_id": "34138029",
+          "title": "2012 Alabama Crimson Tide baseball team",
+          "text": "The 2012 Alabama Crimson Tide baseball team will represent the University of Alabama in the 2012 NCAA Division I baseball season. The Crimson Tide play their home games in Sewell-Thomas Stadium.",
+          "score": 18.353083842739345
+        }
+      ],
+      "labels": {
+        "local_gain": 0.5,
+        "answer_gain": 0,
+        "redundancy": 0.0,
+        "final_gain": 0.5
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "noanswer",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 477,
+      "id": "7e71a4ceb8c21201ec794543",
+      "state_id": "5abeb89a5542994516f453fe:0",
+      "kind": "baseline",
+      "question": "Along with American professional wrestler and actress April Hunter, who costars in the 2006 film Just Another Romantic Wrestling Comedy?",
+      "state_before": {
+        "question": "Along with American professional wrestler and actress April Hunter, who costars in the 2006 film Just Another Romantic Wrestling Comedy?",
+        "active_evidence": [],
+        "backup_evidence": [],
+        "seen_documents": [],
+        "retrieval_history": []
+      },
+      "query": "Just Another Romantic Wrestling Comedy cast 2006",
+      "retrieved_docs": [
+        {
+          "doc_id": "13555251",
+          "title": "Just Another Romantic Wrestling Comedy",
+          "text": "Just Another Romantic Wrestling Comedy is a 2006 film starring April Hunter and Joanie Laurer. This Romantic comedy film was premiered at New Jersey and New York City on December 1, 2006 and was released on DVD in the United States and the United Kingdom on April 17, 2007. After the film's DVD release \"Just Another Romantic Wrestling Comedy\" won an \"Honorable Mention\" award at the New Jersey International Festival awards. The release is being handled by \"Victory Multimedia\".",
+          "score": 42.31969556343859
+        },
+        {
+          "doc_id": "51295989",
+          "title": "Just Love Me",
+          "text": "Just Love Me (Polish: \"Tylko mnie kochaj\" ) is a 2006 Polish romantic comedy film directed by Ryszard Zatorski.",
+          "score": 26.731677794937216
+        },
+        {
+          "doc_id": "20163012",
+          "title": "Just Friends (disambiguation)",
+          "text": "Just Friends is a 2005 romantic comedy film.",
+          "score": 24.512799794247876
+        },
+        {
+          "doc_id": "50716258",
+          "title": "Just Married (disambiguation)",
+          "text": "Just Married is a 2003 American romantic comedy film",
+          "score": 24.24978483014852
+        },
+        {
+          "doc_id": "41591574",
+          "title": "Just This Once (film)",
+          "text": "Just This Once is a 1952 romantic comedy film with Peter Lawford and Janet Leigh.",
+          "score": 22.561752806229187
+        }
+      ],
+      "labels": {
+        "local_gain": 0.5,
+        "answer_gain": 1,
+        "redundancy": 0.0,
+        "final_gain": 1.5
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "Joanie Laurer",
+        "correctness_before": 0.0,
+        "correctness_after": 1.0
+      }
+    },
+    {
+      "source_line": 1035,
+      "id": "cf592e06f987a88a99f34562",
+      "state_id": "5a7b6a3d55429931da12ca9d:0",
+      "kind": "entity",
+      "question": "Who appeared in 270 films between 1910 and 1952 and directed 38 silent films between 1915 and 1927, Richard Boleslawski or Howard M. Mitchell?",
+      "state_before": {
+        "question": "Who appeared in 270 films between 1910 and 1952 and directed 38 silent films between 1915 and 1927, Richard Boleslawski or Howard M. Mitchell?",
+        "active_evidence": [],
+        "backup_evidence": [],
+        "seen_documents": [],
+        "retrieval_history": []
+      },
+      "query": "Richard Boleslawski",
+      "retrieved_docs": [
+        {
+          "doc_id": "1054743",
+          "title": "Richard Boleslawski",
+          "text": "Richard Boleslavsky or Richard Boleslawski (February 4, 1889 – January 17, 1937) was a Polish theatre and film director, actor and teacher of acting.",
+          "score": 29.401572451688903
+        },
+        {
+          "doc_id": "9162606",
+          "title": "O'Shaughnessy's Boy",
+          "text": "O'Shaughnessy's Boy is a 1935 film starring Wallace Beery and Jackie Cooper. It was directed by Richard Boleslawski.",
+          "score": 22.582514940153615
+        },
+        {
+          "doc_id": "36936355",
+          "title": "The Gay Diplomat",
+          "text": "The Gay Diplomat is a 1931 American film. Directed by Richard Boleslawski for RKO Radio Pictures, it starred Ivan Lebedeff, Genevieve Tobin and Betty Compson.",
+          "score": 21.64669114233332
+        },
+        {
+          "doc_id": "28332506",
+          "title": "Feketeszárú cseresznye",
+          "text": "Feketeszárú cseresznye is a Hungarian play by Sándor Hunyady. It was first produced in 1930. The 1933 movie by Richard Boleslawski with the title Storm at Daybreak is based on this story. The main roles are played by Kay Francis and Nick Asther.",
+          "score": 18.40515931645792
+        },
+        {
+          "doc_id": "44087710",
+          "title": "Boleslavsky",
+          "text": "Boleslavski, Boleslavsky, Boleslawski, or Boleslawsky are surnames of Slavic origin. They can refer to:",
+          "score": 17.97244017436762
+        }
+      ],
+      "labels": {
+        "local_gain": 0.5,
+        "answer_gain": 0,
+        "redundancy": 0.0,
+        "final_gain": 0.5
+      },
+      "answer_evaluation": {
+        "answer_before": "noanswer",
+        "answer_after": "yes",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 1233,
+      "id": "a47d183d4f4a9173ea677885",
+      "state_id": "5a80e0f4554299260e20a19f:2",
+      "kind": "entity",
+      "question": "What is a 19th-century building in the city of Chihuahua, Mexico, that has a shrine to an honorific title given to a man considered the driving force behind the establishment of his country, state, or nation?",
+      "state_before": {
+        "question": "What is a 19th-century building in the city of Chihuahua, Mexico, that has a shrine to an honorific title given to a man considered the driving force behind the establishment of his country, state, or nation?",
+        "active_evidence": [],
+        "backup_evidence": [
+          {
+            "doc_id": "40155607",
+            "title": "Benito Juárez Airport (Argentina)",
+            "text": "Benito Juárez Airport (Spanish: \"Aeropuerto Benito Juárez\" , ICAO: SAZJ ) is a public use airport located near Benito Juárez, Buenos Aires, Argentina.",
+            "score": 32.179467767186594
+          },
+          {
+            "doc_id": "43571965",
+            "title": "Benito Juárez Hemicycle",
+            "text": "The Benito Juárez Hemicycle is a Neoclassical monument located at the Alameda Central park in Mexico City, Mexico and commemorating the Mexican statesman Benito Juárez. The statue of Juárez is flanked by marble Doric columns. The pedestal bears the inscription \"Al benemerito Benito Juárez la Patria\" (Spanish: \"To the meritorious Benito Juárez, the Homeland\").",
+            "score": 30.665987897436885
+          },
+          {
+            "doc_id": "18898764",
+            "title": "Museo Casa Juárez",
+            "text": "The Museo de la Lealtad Republicana (Museum of the Republican Loyalty), also known as the Museo Casa Juárez, is a 19th-century building in the city centre of Chihuahua, Mexico. It housed the constitutional government of President Benito Juárez during his stay in Chihuahua while Maximilian of Habsburg reigned as Emperor of Mexico, supported by the French, and was thus the \"de facto\" National Palace of Mexico.",
+            "score": 30.075616241645367
+          },
+          {
+            "doc_id": "20029820",
+            "title": "Benito Juárez Municipality",
+            "text": "Benito Juárez Municipality may refer to one of several Mexican municipalities:",
+            "score": 29.9411401615248
+          },
+          {
+            "doc_id": "18945068",
+            "title": "Benito Juárez Autonomous University of Oaxaca",
+            "text": "The Benito Juárez Autonomous University of Oaxaca (Spanish: Universidad Autónoma Benito Juárez de Oaxaca , UABJO) is a public university located in the city of Oaxaca de Juárez in state of Oaxaca, Mexico.",
+            "score": 29.642428775643907
+          },
+          {
+            "doc_id": "41028963",
+            "title": "Historic downtown Chihuahua",
+            "text": "Chihuahua's historic downtown is one of the most important business districts of the city. The downtown is home to a shopping hub called Libertad Street, and contains most of the historical landmarks of the capital city, including the Cathedral of Chihuahua, Museo Casa Chihuahua (Former Federal Palace), Museo Casa Juarez (House to the president Benito Juarez during a short period in the 1860s) and the celebrated Quinta Gameros, one of the finest examples of early 20th century architecture in the whole state of Chihuahua.",
+            "score": 34.77864936315886
+          }
+        ],
+        "seen_documents": [
+          "40155607",
+          "43571965",
+          "18898764",
+          "20029820",
+          "18945068",
+          "41028963"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "Shrine to Benito Juárez in Chihuahua",
+            "doc_ids": [
+              "40155607",
+              "43571965",
+              "18898764",
+              "20029820",
+              "18945068"
+            ]
+          },
+          {
+            "step": 1,
+            "query": "Museo Casa Juárez shrine Benito Juárez",
+            "doc_ids": [
+              "18898764",
+              "41028963",
+              "40155607",
+              "43571965",
+              "20029820"
+            ]
+          }
+        ]
+      },
+      "query": "Chihuahua",
+      "retrieved_docs": [
+        {
+          "doc_id": "40396378",
+          "title": "List of tallest buildings in Chihuahua, Chihuahua",
+          "text": "This list of tallest buildings in Chihuahua ranks skyscrapers in Mexico, city of Chihuahua, Chihuahua by height.",
+          "score": 16.139482853734982
+        },
+        {
+          "doc_id": "20009740",
+          "title": "Chihuahua Municipality",
+          "text": "Chihuahua is one of the 67 municipalities of Chihuahua, in northern Mexico. The municipal seat is the city of Chihuahua which is also the capital of Chihuahua State.",
+          "score": 15.826469345233447
+        },
+        {
+          "doc_id": "23962301",
+          "title": "Chihuahua (state)",
+          "text": "Chihuahua (] ), officially the Free and Sovereign State of Chihuahua (Spanish: \"Estado Libre y Soberano de Chihuahua\" ), is one of the 32 states of Mexico. Its capital city is Chihuahua City.",
+          "score": 15.72481225376639
+        },
+        {
+          "doc_id": "25941404",
+          "title": "Chihuahua shiner",
+          "text": "The Chihuahua shiner (\"Notropis chihuahua\") is a species of cyprinid fish.",
+          "score": 15.714268451346715
+        },
+        {
+          "doc_id": "5307226",
+          "title": "Colonias of Chihuahua, Chihuahua",
+          "text": "The City of Chihuahua, Chihuahua, Mexico is divided mainly into areas called Colonias, which incorporate residential and commercial elements.",
+          "score": 15.689371941234091
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.0,
+        "final_gain": 0.0
+      },
+      "answer_evaluation": {
+        "answer_before": "yes",
+        "answer_after": "yes",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    },
+    {
+      "source_line": 55,
+      "id": "a5e53bfa5b2ae9042f85100c",
+      "state_id": "5abcbe5d5542996583600469:2",
+      "kind": "entity",
+      "question": "Which internet podcast is run by the author of the 1990 novel \"Billy\"?",
+      "state_before": {
+        "question": "Which internet podcast is run by the author of the 1990 novel \"Billy\"?",
+        "active_evidence": [
+          {
+            "doc_id": "4852799",
+            "title": "Billy (novel)",
+            "text": "Billy is a 1990 novel by Whitley Strieber. The novel tells the story of the abduction of a child and the terror of his experience.",
+            "score": 23.995777769069406
+          },
+          {
+            "doc_id": "266991",
+            "title": "Whitley Strieber",
+            "text": "Louis Whitley Strieber ( ; born June 13, 1945) is an American writer best known for his horror novels \"The Wolfen\" and \"The Hunger\" and for \"Communion\", a non-fiction account of his alleged experiences with non-human entities. He has maintained a dual career of author of fiction and advocate of alternative concepts through his best-selling non-fiction books, his Unknown Country web site, and his Internet podcast, Dreamland.",
+            "score": 33.36309171748029
+          }
+        ],
+        "backup_evidence": [
+          {
+            "doc_id": "35388439",
+            "title": "Nocturnal (novel)",
+            "text": "Nocturnal is a novel and podcast by author Scott Sigler. The novel was originally released in 2007 in podcast format, with a print format releasing in 2012 by Crown Publishing with some elements from the original version altered.",
+            "score": 24.245866146929522
+          },
+          {
+            "doc_id": "28502655",
+            "title": "Billy the Kid (novel)",
+            "text": "Billy the Kid is a children's novel by the English author Michael Morpurgo, first published in 2000.",
+            "score": 23.79077584164738
+          },
+          {
+            "doc_id": "697872",
+            "title": "Billy Bathgate",
+            "text": "Billy Bathgate is a 1989 novel by author E. L. Doctorow that won the 1989 National Book Critics Circle award for fiction for 1990, the 1990 PEN/Faulkner Award for Fiction, the 1990 William Dean Howells Medal, and was the runner up for the 1990 Pulitzer Prize and the 1989 National Book Award. The story is told in the first person by Billy \"Bathgate\" Behan, a fifteen-year-old boy who first becomes the gofer and then surrogate son of mobster Dutch Schultz.",
+            "score": 22.52675881326676
+          },
+          {
+            "doc_id": "35482946",
+            "title": "Infected (novel)",
+            "text": "Infected is a science fiction novel by author Scott Sigler. The novel was initially released in 2006 in podcast format with a print release in 2008 by Crown Publishing, with Sigler continuing to offer the podcast version online. The book was initially titled \"Infested\", with the name changing in order to distance itself from a movie releasing with a similar title.",
+            "score": 21.197788871326225
+          },
+          {
+            "doc_id": "8158230",
+            "title": "The Hunger (Strieber novel)",
+            "text": "The Hunger (1981) is a novel by Whitley Strieber. The plot involves a beautiful and wealthy vampire named Miriam Blaylock who takes human lovers and transforms them into vampire-human hybrids.",
+            "score": 29.120205774533197
+          },
+          {
+            "doc_id": "7241658",
+            "title": "Communion (book)",
+            "text": "Communion: A True Story is a book by American ufologist and horror author Whitley Strieber that was first published in February 1987. The book is based on the claims of Whitley Strieber, who experiences \"lost time\" and terrifying flashbacks, which hypnosis undertaken by Budd Hopkins later links to an alleged encounter with aliens.",
+            "score": 28.81507592757194
+          },
+          {
+            "doc_id": "9358857",
+            "title": "Communion (1989 film)",
+            "text": "Communion is a 1989 drama horror film based on the book of the same name by Whitley Strieber.",
+            "score": 28.36230816414523
+          },
+          {
+            "doc_id": "10252206",
+            "title": "The Wild (novel)",
+            "text": "The Wild is a fantasy novel by American ufologist and horror fiction writer Whitley Strieber that was first published in 1991.",
+            "score": 27.442694534748103
+          }
+        ],
+        "seen_documents": [
+          "35388439",
+          "4852799",
+          "28502655",
+          "697872",
+          "35482946",
+          "266991",
+          "8158230",
+          "7241658",
+          "9358857",
+          "10252206"
+        ],
+        "retrieval_history": [
+          {
+            "step": 0,
+            "query": "Author of Billy 1990 novel podcast",
+            "doc_ids": [
+              "35388439",
+              "4852799",
+              "28502655",
+              "697872",
+              "35482946"
+            ]
+          },
+          {
+            "step": 1,
+            "query": "Whitley Strieber podcast",
+            "doc_ids": [
+              "266991",
+              "8158230",
+              "7241658",
+              "9358857",
+              "10252206"
+            ]
+          }
+        ]
+      },
+      "query": "Billy (novel)",
+      "retrieved_docs": [
+        {
+          "doc_id": "4852799",
+          "title": "Billy (novel)",
+          "text": "Billy is a 1990 novel by Whitley Strieber. The novel tells the story of the abduction of a child and the terror of his experience.",
+          "score": 18.395617108995605
+        },
+        {
+          "doc_id": "28502655",
+          "title": "Billy the Kid (novel)",
+          "text": "Billy the Kid is a children's novel by the English author Michael Morpurgo, first published in 2000.",
+          "score": 18.23284683803101
+        },
+        {
+          "doc_id": "1666384",
+          "title": "Billy Budd (disambiguation)",
+          "text": "Billy Budd is a short novel by Herman Melville.",
+          "score": 18.19847197948157
+        },
+        {
+          "doc_id": "6159907",
+          "title": "Billy Liar (disambiguation)",
+          "text": "Billy Liar is a 1959 novel by Keith Waterhouse.",
+          "score": 18.19847197948157
+        },
+        {
+          "doc_id": "19155360",
+          "title": "Billy Pilgrim",
+          "text": "Billy Pilgrim is a fictional character and protagonist of Kurt Vonnegut's 1969 novel \"Slaughterhouse-Five\", who has appeared in adaptations of the novel for film and the stage. Billy Pilgrim was based on Vonnegut's comrade-in-arms Edward R. Crone, Jr.",
+          "score": 16.987829343826064
+        }
+      ],
+      "labels": {
+        "local_gain": 0.0,
+        "answer_gain": 0,
+        "redundancy": 0.4,
+        "final_gain": -0.4
+      },
+      "answer_evaluation": {
+        "answer_before": "yes",
+        "answer_after": "yes",
+        "correctness_before": 0.0,
+        "correctness_after": 0.0
+      }
+    }
+  ]
+}
